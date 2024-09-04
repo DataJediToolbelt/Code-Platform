@@ -10,7 +10,37 @@ we are huge fans of SpringBoot and Node, we did some cool things with them
 and man are they fantastic overall, but we felt there could be much more we could do in a 
 simpler and more enabling long term manner.
 
-So, how and why did we choose Python?
+So, how and why did we choose Python? While other programming languages that we have used have 
+adoption and established communities behind them there was something always nagging us, this is
+intended to be a very large data driven platform and are we using the right technologies.
+For us, the simple answer was no. What would help us drive better technology from our data driven platform, a 
+powerful technology that is a data enabler. Python was the easy choice with this as our core 
+need. Python is the widest adopted development technologists
+when working with data, hands down. There is no other technology in the data engineering space with
+close to the capabilities it provides. Whether it is AI, or data focused whether that is EDW (Spark/DataBricks/
+Snowflake), RDBMS data usage it is a foundational enabler. But well beyond the massive community, supported
+assets being maintained it also has a vast amount of other industry leading capabilities whether it is
+websites, APIs, or automation Python has a large extensible offering.
+
+## Python 
+Details about our python implementation.
+
+### Python Version
+We currently have implemented Python v3.1
+
+### Libraries Implemented
+This section is intended to show any non-builtin/included Python libraries. 
+
+| Library | Purpose                                                                                    | 
+|---------|--------------------------------------------------------------------------------------------|
+| rstr    | Random string generator                                                                    |
+| pandas  | Top industry leading data library                                                          |
+| hashlib | Creates secure hash codes that support a series of industry standards in the hashing space |
+| pymssql | RDBMS library for SQL Server                                                               |
+| psycopg2 | RDBMS library for PostgreSQL                                                               |
+| flask   | Web Framework                                                                              |
+| fastpi  | API Franework                                                                              |        
+| pytorch | A leading AI library for building and training data                                        |
 
 
 # The Synthetic Data Platform Legacy Assets: Repository Layout
