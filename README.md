@@ -73,7 +73,7 @@ pip3 install -r requirements.txt
 
 # The Synthetic Data Platform - Functionality
 In order to best explain how the Synthetic Data Platform works we have created content
-that explains it. Please start <a href="https://github.com/SyntheticDataPlatform/Python/blob/main/Platform-Areas.md" target="_blank">here</a>.
+that explains it. Please start <a href="./Platform-Areas.md" target="_blank">here</a>.
 
 # The Synthetic Data Platform Legacy Assets: Repository Layout
 The following code is legacy and not being maintained. The goal is that in late 2024 or early 2025 these repositories will
