@@ -20,7 +20,7 @@ This will invoke the method(s) that query the relevant platform_ tables.
 3. The appropriate data generation methods are invoked 
 4. Upserting (inserting) data into the datatier_ table(s) and auditing table.
 
-# Retrieving Generated Data
+## Retrieving Generated Data
 Retrieving generated data within the platform is intended to be how the platform
 is used by users to get specific generated data they request.
 
