@@ -40,18 +40,22 @@ https://python.land/virtual-environments/virtualenv
 source ./venv/bin/activate
 
 ### Libraries Implemented
-This section is intended to show any non-builtin/included Python libraries. 
+This section is intended to show any non-builtin/included Python libraries. These are the core
+ones we have added (they have carried along the libraries they leverage as well).
 
-| Library | Purpose                                                                                    | 
-|---------|--------------------------------------------------------------------------------------------|
-| rstr    | Random string generator                                                                    |
-| pandas  | Top industry leading data library                                                          |
-| hashlib | Creates secure hash codes that support a series of industry standards in the hashing space |
-| pymssql | RDBMS library for SQL Server                                                               |
-| psycopg2 | RDBMS library for PostgreSQL                                                               |
-| flask   | Web Framework                                                                              |
-| fastpi  | API Franework                                                                              |        
-| pytorch | A leading AI library for building and training data                                        |
+| Library    | Purpose                                           | 
+|------------|---------------------------------------------------|
+| rstr       | Random string generator                           |
+| pandas     | Top industry leading data library                 |                                   |
+| psycopg2   | RDBMS library for PostgreSQL                      |
+| pymssql    | RDBMS library for PostgreSQL                      |
+| flask      | Web Framework                                     |
+| fastpi     | API Franework  <br/>                              |
+| keras      | Deep learning library                             |
+| matplotlib | Library for visualizations                        |
+| nltk       | Natural Language Toolkit                          |        
+| pytorch    | A leading AI library for building and training data |
+| requests   | Web Requet framework                              |
 
 
 # The Synthetic Data Platform Legacy Assets: Repository Layout
