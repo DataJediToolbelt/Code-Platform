@@ -30,10 +30,23 @@ print(f"{c.microseconds}")
 config = platform_configuration()
 platform_operation = config['General']['platform_operation']
 
+# Create a dictionary of base platform queries to enable us to leverage a parameter
+# model for retrieval
+my_query_dict = {'refdata_status': 'select * from refdata_statuses',
+           'datatier': 'select * from datatier',
+           'datatier_structures':'select * from datatier_structures'}
+key_to_find = 'refdata_status'
+
 # Main Program
 def main():
     print(f"Synthetic Data Platform Started at {datetime.now()}")
     print(f"Platform Operation Type: {platform_operation}")
+
+    if key_to_find in my_query_dict:
+        print(f"Key '{key_to_find}' found with value: {my_query_dict[key_to_find]}")
+    else:
+        print(f"Key '{key_to_find}' not found.")
+
     print("Program Ended")
 
 if __name__ == "__main__":
