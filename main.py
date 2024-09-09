@@ -1,29 +1,40 @@
-from connectors.postgresql import create_conn, close_conn
-from listbuilder.lists_generated_data import (names_last, names_first, credit_cards,
-                                              addresses, area_codes, zip_codes, phone_number)
+# Python Imports
+from datetime import time, datetime
+import os
+# Platform Imports
+from common.configuration_mgmt import platform_configuration
+
+# Local Variables
+local_path = os.getcwd()
+#audit_details
+#msg_details
+start_time = datetime.now()
+# Auditing Variables
+component_name = "platform_processor"
+processing_run_datetime = datetime.now()
+processing_objectname = ""
+operation_name = None
+
+"""
+Calculating Tasks
+a = datetime.datetime.now()
+b = datetime.datetime.now()
+c = b - a
+# c.days, c.seconds
+print(f"{c.seconds}")
+print(f"{c.microseconds}")
+"""
+# Read Configuration and populate key values to process along
+# This step also has settings to determine if there is a logging output
+# for those running the code
+config = platform_configuration()
+platform_operation = config['General']['platform_operation']
 
 # Main Program
-postgres_connection = create_conn()
-# Table Select
-output_data = True
-names_first(postgres_connection,output_data)
-#names_last(postgres_connection)
-#credit_cards(postgres_connection)
-#area_codes(postgres_connection)
-#addresses(postgres_connection)
-#zip_codes(postgres_connection)
-#phone_number(postgres_connection)
+def main():
+    print(f"Synthetic Data Platform Started at {datetime.now()}")
+    print(f"Platform Operation Type: {platform_operation}")
+    print("Program Ended")
 
-#cursor_query = postgres_connection.cursor()
-#cursor_query.execute("SELECT * from asset_source")
-#data = cursor_query.fetchall()
-#for row in data:
-    # Access individual columns using indices
-    #column1_value = row[0]
-    #column2_value = row[1]
-    #print(f"Column 1: {column1_value}, Column 2: {column2_value}")
-    # print("Result of asset_source query: ", cursor.fetchall())
-close_conn(postgres_connection)
-#print("PostgreSQL connection is closed")
-
-print("Program Ended")
+if __name__ == "__main__":
+    main()

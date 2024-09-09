@@ -28,6 +28,17 @@ Details about our python implementation.
 ### Python Version
 We currently have implemented Python v3.1
 
+### Python Virtual Environment
+We always recommend following all best practices of technologies, one very nice one in Python is
+there usage of virtual environments. While we have the venv directory excluded within the .getignore
+you must activate or source it depending upon your OS.
+
+Here is one of the thousands of articles that explains virtual environments in Python.
+https://python.land/virtual-environments/virtualenv
+
+#### MacOS
+source ./venv/bin/activate
+
 ### Libraries Implemented
 This section is intended to show any non-builtin/included Python libraries. 
 
