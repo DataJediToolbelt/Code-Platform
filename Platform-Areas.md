@@ -1,3 +1,5 @@
+<a href="https://github.com/SyntheticDataPlatform/Python/blob/main/profile/README.md" target="_blank">Main Page</a>
+
 # SDP - Synthetic Data Platform Capabilities
 The following content is intended to explain the core capabilities Python
 will help us deliver.
