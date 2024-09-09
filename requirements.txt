@@ -1,0 +1,12 @@
+rstr
+pandas
+keras
+matplotlib
+nltk
+pytorch
+requests
+fastapi
+pymssql
+flask
+flask-restful
+flask-cors

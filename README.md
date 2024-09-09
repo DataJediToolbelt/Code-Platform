@@ -1,4 +1,4 @@
-# Python
+# Application and Web Tier Platform
 As we discussed on the main platform README.md the main focus of our efforts was on data 
 and supporting it with an extensible data tier for a while. As we 
 built development assets to showcase the tremendous data model extensibilities and 
@@ -22,11 +22,8 @@ Snowflake), RDBMS data usage it is a foundational enabler. But well beyond the m
 assets being maintained it also has a vast amount of other industry leading capabilities whether it is
 websites, APIs, or automation Python has a large extensible offering.
 
-## Python 
-Details about our python implementation.
-
-### Python Version
-We currently have implemented Python v3.1
+## Python Technology
+Details about our python implementation. We currently have implemented Python v3.9 and above,
 
 ### Python Virtual Environment
 We always recommend following all best practices of technologies, one very nice one in Python is
@@ -36,10 +33,12 @@ you must activate or source it depending upon your OS.
 Here is one of the thousands of articles that explains virtual environments in Python.
 https://python.land/virtual-environments/virtualenv
 
-#### MacOS
+We used the simple command (while within the specific project directory): python -m venv venv
+
+#### MacOS and Linux
 source ./venv/bin/activate
 
-### Libraries Implemented
+## Libraries Implemented
 This section is intended to show any non-builtin/included Python libraries. These are the core
 ones we have added (they have carried along the libraries they leverage as well).
 
@@ -53,9 +52,24 @@ ones we have added (they have carried along the libraries they leverage as well)
 | fastpi     | API Franework  <br/>                              |
 | keras      | Deep learning library                             |
 | matplotlib | Library for visualizations                        |
-| nltk       | Natural Language Toolkit                          |        
-| pytorch    | A leading AI library for building and training data |
+| nltk       | Natural Language Toolkit                          |
 | requests   | Web Requet framework                              |
+
+### Installing Packages and PIP
+PIP manages Python packages, it also must be updated and maintained. 
+From the project directory virtual environment.
+
+`
+python -m pip install --upgrade pip
+`
+
+We have tried to simplify how you can get the platform running, we have put the
+packages into a requirements.txt file. Within the project directory virtual 
+environment you can run:
+
+`
+pip3 install -r requirements.txt
+`
 
 # The Synthetic Data Platform - Functionality
 In order to best explain how the Synthetic Data Platform works we have created content
@@ -63,7 +77,7 @@ that explains it. Please start <a href="https://github.com/SyntheticDataPlatform
 
 # The Synthetic Data Platform Legacy Assets: Repository Layout
 The following code is legacy and not being maintained. The goal is that in late 2024 or early 2025 these repositories will
-be removed as any functionlaity is ported into Python.
+be removed as any functionality is ported into Python.
 
 ## APIs - Legacy
 Specific artifacts related to the platform's provided APIs. It should be noted that most of the APIs need refactoring as the data model

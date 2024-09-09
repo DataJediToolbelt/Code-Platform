@@ -39,7 +39,7 @@ key_to_find = 'refdata_status'
 
 # Main Program
 def main():
-    print(f"Synthetic Data Platform Started at {datetime.now()}")
+    print(f"Synthetic Application Platform Started at {datetime.now()}")
     print(f"Platform Operation Type: {platform_operation}")
 
     if key_to_find in my_query_dict:

@@ -5,7 +5,9 @@ The following content is intended to explain the core capabilities Python
 will help us deliver.
 
 # Key Technical Capabilities Provided
-The following are key technical capabilities the platform provides.
+The following are key technical capabilities the platform provides. The platform
+is intended to have two specific application types it supports with its core codebase,
+application (main/py) and web tier - web and apis (app.py).
 
 ## Generating Data
 Generating data within the platform is how the platform grows its data. This is known 
