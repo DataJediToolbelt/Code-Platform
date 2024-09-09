@@ -4,9 +4,52 @@
 The following content is intended to explain the core capabilities Python
 will help us deliver.
 
-# Key Technical Capabilities Needed
+# Key Technical Capabilities Provided
+The following are key technical capabilities the platform provides.
 
-- Ability to generate random strings based on provided regular expressions.
-- Ability to associate data in complex manners while keeping it simplified from a 
-user perspective.
-- 
+## Generating Data
+Generating data within the platform is how the platform grows its data. This is known 
+as the datatier subsystem of the platform.
+
+1. Platform startup, main.py
+2. Settings are loaded and the key setting that is evaluated is platform_operation as
+this determines the action the platform will take. For generating data is data-generation.
+This will invoke the method(s) that query the relevant platform_ tables.
+3. The appropriate data generation methods are invoked 
+4. Upserting (inserting) data into the datatier_ table(s) and auditing table.
+
+# Retrieving Generated Data
+Retrieving generated data within the platform is intended to be how the platform
+is used by users to get specific generated data they request.
+
+Option 1:
+1. Platform is up and running with any specific settings.
+2. Platform users will leverage the platform apis
+
+Option 2:
+1. Platform startup, main.py
+2. Settings are loaded and the key setting that is evaluated is platform_operation as
+this determines the action the platform will take. For retrieving generating data is data-retrieval.
+This will invoke the method(s) that query the relevant datatier values and respond
+to user requests.
+3. Data will be upserted into the appropriate auditing table.
+
+
+
+## Anonymyzing Data
+This feature is slated to be developed in 11/2024 post all the code being in place
+for the platform overall.
+
+This processing of data works on hash keys that are created by data received. 
+from sending systems. If the data sent (meaning the field order) is changed in any way
+then it will render any key and their subsequent relationships null and void.
+
+
+1. Platform startup, main.py
+2. Settings are loaded and the key setting that is evaluated is platform_operation as
+this determines the action the platform will take. For generating data is data-anon
+This will invoke the method(s) that create guids and/or sha-512 hash codes to be used
+as key reference for input data so no native values are stored during this process.
+3. The keyed data hashes are then reviewed against the platform and either a related 
+dataset is retrieved or a dataset linkage in created. This linkage will be permanent. 
+4. Upserting (inserting) data into the appropriate table(s) and auditing table.
