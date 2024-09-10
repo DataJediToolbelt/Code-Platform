@@ -1,11 +1,11 @@
 def query_datatier()->None:
-    print(f"Starting Insert/Upsert Operation")
+    print(f"Starting Query Operation")
 
 def query_datatier_datastructure()->None:
-    print(f"Starting Insert/Upsert Operation")
+    print(f"Starting Query Operation")
 
 def query_datatier_datastructure_dtl()->None:
-    print(f"Starting Insert/Upsert Operation")
+    print(f"Starting Query Operation")
 
 # Main Program
 def main():
