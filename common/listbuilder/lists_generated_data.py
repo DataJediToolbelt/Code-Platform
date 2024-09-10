@@ -1,9 +1,9 @@
 import os
-import psycopg2
-from psycopg2 import Error
+#import psycopg2
+#from psycopg2 import Error
 from common.file_outputting import file_output_generation
 
-# All the Data Attributes - dtaattributeid in datatier
+# All the Data Attributes - dataattributeid in datatier
 #1, Names - Last
 #18, Names - First
 #6, Credit Cards
@@ -54,7 +54,7 @@ def names_first(postgres_connection, output_data):
             input_type = "names_first"
             file_output_generation(input_type, sorted_list)
         #print("You are connected to - ", record, "\n")
-    except (Exception, Error) as error:
+    except (Exception) as error:
         print("Error ", error)
     finally:
         if (postgres_connection):
@@ -79,7 +79,7 @@ def names_last(postgres_connection):
             dataattributeid, registeredapp,statusid) in sorted_list:
             print(datatierid, basevalue, supportingvalue1, supportingvalue2, supportingvalue3, supportingvalue4,
             dataattributeid, registeredapp,statusid)
-    except (Exception, Error) as error:
+    except (Exception) as error:
         print("Error while connecting to PostgreSQL", error)
     finally:
         if (postgres_connection):
@@ -106,7 +106,7 @@ def credit_cards(postgres_connection):
             dataattributeid, registeredapp,statusid)
 
         #print("You are connected to - ", record, "\n")
-    except (Exception, Error) as error:
+    except (Exception) as error:
         print("Error while connecting to PostgreSQL", error)
     finally:
         if (postgres_connection):
@@ -133,7 +133,7 @@ def area_codes(postgres_connection):
             dataattributeid, registeredapp,statusid)
 
         #print("You are connected to - ", record, "\n")
-    except (Exception, Error) as error:
+    except (Exception) as error:
         print("Error while connecting to PostgreSQL", error)
     finally:
         if (postgres_connection):
@@ -160,7 +160,7 @@ def addresses(postgres_connection):
             dataattributeid, registeredapp,statusid)
 
         #print("You are connected to - ", record, "\n")
-    except (Exception, Error) as error:
+    except (Exception) as error:
         print("Error while connecting to PostgreSQL", error)
     finally:
         if (postgres_connection):
@@ -187,7 +187,7 @@ def zip_codes(postgres_connection):
             dataattributeid, registeredapp,statusid)
 
         #print("You are connected to - ", record, "\n")
-    except (Exception, Error) as error:
+    except (Exception) as error:
         print("Error while connecting to PostgreSQL", error)
     finally:
         if (postgres_connection):
@@ -214,7 +214,7 @@ def phone_number(postgres_connection):
             dataattributeid, registeredapp,statusid)
 
         #print("You are connected to - ", record, "\n")
-    except (Exception, Error) as error:
+    except (Exception) as error:
         print("Error while connecting to PostgreSQL", error)
     finally:
         if (postgres_connection):
