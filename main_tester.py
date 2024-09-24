@@ -1,4 +1,4 @@
-from connectors.postgresql import create_conn, close_conn
+from connectors.rdbms.postgresql import create_conn, close_conn
 from common.listbuilder.lists_generated_data import (names_first)
 
 def main():

@@ -42,19 +42,6 @@ source ./venv/bin/activate
 This section is intended to show any non-builtin/included Python libraries. These are the core
 ones we have added (they have carried along the libraries they leverage as well).
 
-| Library    | Purpose                                           | 
-|------------|---------------------------------------------------|
-| rstr       | Random string generator                           |
-| pandas     | Top industry leading data library                 |                                   |
-| psycopg2   | RDBMS library for PostgreSQL                      |
-| pymssql    | RDBMS library for PostgreSQL                      |
-| flask      | Web Framework                                     |
-| fastpi     | API Franework  <br/>                              |
-| keras      | Deep learning library                             |
-| matplotlib | Library for visualizations                        |
-| nltk       | Natural Language Toolkit                          |
-| requests   | Web Requet framework                              |
-
 ### Installing Packages and PIP
 PIP manages Python packages, it also must be updated and maintained. 
 From the project directory virtual environment.
@@ -70,6 +57,26 @@ environment you can run:
 `
 pip3 install -r requirements.txt
 `
+
+## Security checks on Modules
+Security is very important when using any libraries, Python does have a reputation for having
+a large amount of modules that are "unsafe". Here is an article from Red Hat about checking for vulnerabilities.
+
+https://www.redhat.com/sysadmin/find-python-vulnerabilities
+
+In order for us to try and mitigate this risk we plan on following a very common path, using pip-audit.
+From the project directory, or within the IDE if you are using one:
+
+`
+pip install pip-audit
+`
+
+Then, simply run
+
+`
+pip-audit
+`
+
 
 # The Synthetic Data Platform - Functionality
 In order to best explain how the Synthetic Data Platform works we have created content
