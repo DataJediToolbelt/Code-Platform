@@ -1,7 +1,6 @@
 import random
 import rstr
 from RegexGenerator import RegexGenerator
-import exrex
 import hashlib
 import uuid
 from uuid import UUID
