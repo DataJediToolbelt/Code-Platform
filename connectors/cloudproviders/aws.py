@@ -1,6 +1,6 @@
-# https://pypi.org/search/?q=aws
-
+# https://aws.amazon.com/sdk-for-python/
 from datetime import time, datetime
+
 
 # Main Program
 def main():

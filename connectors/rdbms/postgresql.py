@@ -1,11 +1,11 @@
 # https://pynative.com/python-postgresql-tutorial/#h-verify-psycopg2-installation
-import psycopg2
-from psycopg2 import Error
+import psycopg
+from psycopg import Error
 
 def create_conn():
     try:
         # Connect to an existing database
-        postgres_connection = psycopg2.connect(user="developer",
+        postgres_connection = psycopg.connect(user="developer",
                                       password="Developer123",
                                       host="Svr2022-DB",
                                       port="5432",
