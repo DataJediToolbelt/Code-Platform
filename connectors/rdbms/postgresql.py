@@ -4,6 +4,9 @@ from psycopg import Error
 
 def create_conn():
     try:
+        # Use Configuration Settings from SQLite to drive this
+        # Conditional based on data being present in database
+
         # Connect to an existing database
         postgres_connection = psycopg.connect(user="developer",
                                       password="Developer123",
