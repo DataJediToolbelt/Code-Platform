@@ -1,12 +1,13 @@
 import configparser
 import datetime
 import os
+import sqlite3
 
 def platform_configuration()->configparser:
     base_dir = os.getcwd()
     now = datetime.datetime.now()
     config = configparser.ConfigParser()
-    config.read('./settings/settings.ini')
+    config.read('../settings/settings.ini')
     # Params
     output_settings = config['General']['output_settings']
     platform_op = config['General']['platform_operation']
@@ -29,5 +30,19 @@ def platform_configuration()->configparser:
     # return the config object to calling program
     return config
 
+
+def configuration_sqllite():
+    conn = sqlite3.connect('../settings/settings.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    # Execute a query
+    cursor.execute("SELECT * FROM configuration")
+
+    # Loop through the rows
+    for row in cursor:
+        print(row['config_param_name'])
+
 if __name__ == "__main__":
     platform_configuration()
+    #configuration_sqllite()
