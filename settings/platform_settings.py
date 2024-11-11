@@ -5,7 +5,7 @@ import sqlite3
 def connect_config():
     con = sqlite3.connect("configuration.db")
     cur = con.cursor()
-    cur.execute("SELECT * FROM configuration")
+    cur.execute("SELECT * FROM configuration_details")
     result= cur.fetchall()
     # loop through the rows
     for row in result:
