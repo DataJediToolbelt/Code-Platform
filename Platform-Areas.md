@@ -1,4 +1,4 @@
-<a href="https://github.com/SyntheticDataPlatform/Python/blob/main/profile/README.md" target="_blank">Main Page</a>
+<a href="https://github.com/DataJediToolbelt/Code-DataJediToolbelt/blob/main/profile/README.md" target="_blank">Main Page</a>
 
 # Key Technical Capabilities Provided
 The following are key technical capabilities the platform provides. The platform

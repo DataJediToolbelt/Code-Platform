@@ -1,5 +1,5 @@
 from connectors.rdbms.postgresql import create_conn, close_conn
-from common.listbuilder.lists_generated_data import (names_first)
+from common.lists_generated_data import (names_first)
 
 def main():
     postgres_connection = create_conn()
