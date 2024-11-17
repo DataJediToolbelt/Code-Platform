@@ -3,11 +3,12 @@ from datetime import datetime
 import os
 # Platform Imports
 from common.platform_settings import connect_config
+from pathlib import Path
 
 # Local Variables
 local_path = os.getcwd()
-#audit_details
-#msg_details
+local_database_path = local_path + os.sep + "platform_data_local"+ os.sep
+
 start_time = datetime.now()
 # Auditing Variables
 component_name = "platform_processor"
