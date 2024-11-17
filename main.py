@@ -1,8 +1,8 @@
 # Python Imports
-from datetime import time, datetime
+from datetime import datetime
 import os
 # Platform Imports
-from common.configuration_mgmt import platform_configuration
+from common.platform_settings import connect_config
 
 # Local Variables
 local_path = os.getcwd()
@@ -27,8 +27,8 @@ print(f"{c.microseconds}")
 # Read Configuration and populate key values to process along
 # This step also has settings to determine if there is a logging output
 # for those running the code
-config = platform_configuration()
-platform_operation = config['General']['platform_operation']
+#config = platform_configuration()
+#platform_operation = config['General']['platform_operation']
 
 # Create a dictionary of base platform queries to enable us to leverage a parameter
 # model for retrieval
@@ -39,13 +39,17 @@ key_to_find = 'refdata_status'
 
 # Main Program
 def main():
-    print(f"Synthetic Application Platform Started at {datetime.now()}")
-    print(f"Platform Operation Type: {platform_operation}")
+    print(f"Data Jedi ToolBelt Platform Started at {datetime.now()}")
+    #print(f"Platform Operation Type: {platform_operation}")
 
-    if key_to_find in my_query_dict:
-        print(f"Key '{key_to_find}' found with value: {my_query_dict[key_to_find]}")
-    else:
-        print(f"Key '{key_to_find}' not found.")
+    # Pull in configuration as step1
+    connect_config()
+
+    # Future potential usage
+    #if key_to_find in my_query_dict:
+    #    print(f"Key '{key_to_find}' found with value: {my_query_dict[key_to_find]}")
+    #else:
+    #    print(f"Key '{key_to_find}' not found.")
 
     print("Program Ended")
 
