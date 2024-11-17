@@ -1,0 +1,29 @@
+"""
+Calculating Tasks
+a = datetime.datetime.now()
+b = datetime.datetime.now()
+c = b - a
+# c.days, c.seconds
+print(f"{c.seconds}")
+print(f"{c.microseconds}")
+"""
+
+# Read Configuration and populate key values to process along
+# This step also has settings to determine if there is a logging output
+# for those running the code
+#config = platform_configuration()
+#platform_operation = config['General']['platform_operation']
+
+# Create a dictionary of base platform queries to enable us to leverage a parameter
+# model for retrieval
+my_query_dict = {'refdata_status': 'select * from refdata_statuses',
+           'datatier': 'select * from datatier',
+           'datatier_structures':'select * from datatier_structures'}
+key_to_find = 'refdata_status'
+
+
+    # Future potential usage
+    #if key_to_find in my_query_dict:
+    #    print(f"Key '{key_to_find}' found with value: {my_query_dict[key_to_find]}")
+    #else:
+    #    print(f"Key '{key_to_find}' not found.")
