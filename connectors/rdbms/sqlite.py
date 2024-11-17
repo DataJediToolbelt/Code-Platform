@@ -4,21 +4,22 @@ import os
 
 # https://www.bing.com/search?q=sqlite+in+python&qs=OS&pq=sqllite+in+python&sc=10-17&cvid=0165D0DB98654814A260D50970313E58&FORM=QBRE&sp=1&ghc=1&lq=0
 def connect(db_location):
-
     print(f"Connection to Local SQLite Started at {datetime.now()}")
-    # Connect to an SQLite database (or create it if it doesn't exist)
+    sql_connection = None
+    # Connect to a SQLite database
     try:
-        conn = sqlite3.connect(db_location+'datajeditoolbelt.db')
+        sql_connection = sqlite3.connect(db_location+'datajeditoolbelt.db')
         # Create a cursor object using the cursor() method
-        cursor = conn.cursor()
+        #cursor = sql_connection.cursor()
         # Query data
-        cursor.execute("SELECT * FROM datamodel_datatables")
-        rows = cursor.fetchall()
-        for row in rows:
-            print(row)
+        #cursor.execute("SELECT * FROM datamodel_datatables")
+        #rows = cursor.fetchall()
+        #for row in rows:
+        #    print(row)
     except sqlite3.Error as error:
         print("Error while connecting to sqlite", error)
-
+    finally:
+        return sql_connection
 
 if __name__ == "__main__":
     start_time = datetime.now()
@@ -31,7 +32,8 @@ if __name__ == "__main__":
     datatier_technologies = None
     platform_datatier = None
     # Local Variables
-    local_path = os.getcwd()
+    local_path = (os.getcwd())
+    local_path = local_path[:-16]
     local_database_path = local_path + os.sep + "platform_data_local" + os.sep
     # Database Connection
-    connect()
+    sql_connection = connect(local_database_path)
