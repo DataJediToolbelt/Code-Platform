@@ -23,7 +23,11 @@ assets being maintained it also has a vast amount of other industry leading capa
 websites, APIs, or automation Python has a large extensible offering.
 
 ## Python Technology
-Details about our python implementation. We currently have implemented Python v3.9 and above,
+Details about our python implementation. We currently have implemented Python v3.9 
+through 3.12 successfully on multiple operating systems, We have leveraged either the download
+and installers from python.org or simply installed Anacoda. 
+
+We have experienced issues with several libraries on 3.13 still being an issue as of November 20, 2024.
 
 ### Python Virtual Environment
 We always recommend following all best practices of technologies, one very nice one in Python is
@@ -37,6 +41,9 @@ We used the simple command (while within the specific project directory): python
 
 #### MacOS and Linux
 source ./venv/bin/activate
+
+#### Windows
+source .\venv\bin\activate
 
 ## Libraries Implemented
 This section is intended to show any non-builtin/included Python libraries. These are the core
@@ -55,7 +62,7 @@ packages into a requirements.txt file. Within the project directory virtual
 environment you can run:
 
 `
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 `
 
 ## Security checks on Modules
@@ -78,11 +85,11 @@ pip-audit
 `
 
 
-# Platform - Functionality
+# Platform - Legacy (Non-Python)
 In order to best explain how the Synthetic Data Platform works we have created content
 that explains it. Please start <a href="./Platform-Areas.md" target="_blank">here</a>.
 
-## APIs - Legacy
+## APIs - Legacy (Non-Python)
 Specific artifacts related to the platform's provided APIs. It should be noted that most of the APIs need refactoring as the data model
 itself was completely refactored to help simplify it and provide greater extensibility for the future.
 
