@@ -39,3 +39,12 @@ for item in items:
     print(item)
 
 
+"""
+Calculating Tasks
+a = datetime.datetime.now()
+b = datetime.datetime.now()
+c = b - a
+# c.days, c.seconds
+print(f"{c.seconds}")
+print(f"{c.microseconds}")
+"""
