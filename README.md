@@ -1,29 +1,27 @@
 # Application and Web Tier Platform
-As we discussed on the main platform README.md the main focus of our efforts was on data 
-and supporting it with an extensible data tier for a while. As we 
-built development assets to showcase the tremendous data model extensibilities and 
-capabilities we were always underwhelmed overall. In the end it seems to have a combination
-of lack of focus and potentially wrong technology for our overall vision.
-
-I do not want anyone to get defensive or think I am slighting any technology as 
-we are huge fans of SpringBoot and Node, we did some cool things with them 
-and man are they fantastic overall, but we felt there could be much more we could do in a 
-simpler and more enabling long term manner.
+As we discussed on the main platform's repository README.md the main focus of our efforts was on data 
+and supporting it with an extensible data tier for a very long time. As we built development assets to showcase 
+the tremendous data model extensibilities and capabilities we were always underwhelmed overall. In the end it seems to have a combination
+of lack of focus and potentially wrong technology for our overall vision. We are notI slighting any technology as used previously. SpringBoot and Node have a very important 
+place in hundreds of widely adopted platforms. While we did some cool things with them 
+and we did some cool things with the technologies we felt there could be much more we could do.
 
 So, how and why did we choose Python? While other programming languages that we have used have 
 adoption and established communities behind them there was something always nagging us, this is
 intended to be a very large data driven platform and are we using the right technologies.
-For us, the simple answer was no. What would help us drive better technology from our data driven platform, a 
-powerful technology that is a data enabler. Python was the easy choice with this as our core 
-need. Python is the widest adopted development technologists
-when working with data, hands down. There is no other technology in the data engineering space with
-close to the capabilities it provides. Whether it is AI, or data focused whether that is EDW (Spark/DataBricks/
-Snowflake), RDBMS data usage it is a foundational enabler. But well beyond the massive community, supported
-assets being maintained it also has a vast amount of other industry leading capabilities whether it is
-websites, APIs, or automation Python has a large extensible offering.
+For us, the simple answer was no. What would help us drive better technology from our data driven platform than 
+a powerful development technology that is a data enabler. Python was the easy choice with this as our core 
+need. Python is the widest adopted development technologists when working with data, hands down. There is 
+no other technology in the data engineering space with close to the capabilities it provides. Whether it is AI, or
+data focused whether that is EDW (Spark/DataBricks/ Snowflake), RDBMS data usage it is a foundational 
+enabler. But well beyond the massive community, supported assets being maintained it also has a vast amount 
+of other industry leading capabilities whether it is command line, websites, APIs, or automation Python has a large extensible offering.
 
 ## Python Technology
-Details about our python implementation. We currently have implemented Python v3.9 and above,
+We currently have implemented Python v3.9 through various dot releases in 3.12 successfully on multiple operating systems, 
+We have leveraged either the download and installers from python.org or simply installed Anacoda. 
+
+<b>We have experienced issues with several libraries on 3.13 still being an issue as of November 20, 2024.</b>
 
 ### Python Virtual Environment
 We always recommend following all best practices of technologies, one very nice one in Python is
@@ -37,6 +35,9 @@ We used the simple command (while within the specific project directory): python
 
 #### MacOS and Linux
 source ./venv/bin/activate
+
+#### Windows
+source .\venv\bin\activate
 
 ## Libraries Implemented
 This section is intended to show any non-builtin/included Python libraries. These are the core
@@ -55,7 +56,7 @@ packages into a requirements.txt file. Within the project directory virtual
 environment you can run:
 
 `
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 `
 
 ## Security checks on Modules
@@ -76,13 +77,21 @@ Then, simply run
 `
 pip-audit
 `
-
-
-# Platform - Functionality
+# Platform
 In order to best explain how the Synthetic Data Platform works we have created content
 that explains it. Please start <a href="./Platform-Areas.md" target="_blank">here</a>.
 
-## APIs - Legacy
+| Area                        | Link                                            |
+|-----------------------------|-------------------------------------------------|
+| General Basics Details of Platform | [Platform Basics](./Platform-Usage-Basics.md)   |  
+| Command Line Platform Usage | [Command Line](./Platform-Usage-CommandLine.md) |
+| Web Tier Platform Usage     | [Web Tier](./Platform-Usage-WebTier.md)         |
+
+# Platform - Legacy (Non-Python)
+In order to best explain how the Synthetic Data Platform works we have created content
+that explains it. Please start <a href="./Platform-Areas.md" target="_blank">here</a>.
+
+## APIs - Legacy (Non-Python)
 Specific artifacts related to the platform's provided APIs. It should be noted that most of the APIs need refactoring as the data model
 itself was completely refactored to help simplify it and provide greater extensibility for the future.
 

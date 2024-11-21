@@ -1,0 +1,50 @@
+Bing - populating dto from database python
+
+from dataclasses import dataclass
+
+@dataclass
+class ItemDto:
+    name: str
+    location: str
+    description: str = ""
+
+items = []
+for row in rows:
+    item = ItemDto(name=row[0], location=row[1], description=row[2])
+    items.append(item)
+
+
+
+from dataclasses import dataclass
+import sqlite3
+
+@dataclass
+class ItemDto:
+    name: str
+    location: str
+    description: str = ""
+
+def fetch_items_from_db():
+    conn = sqlite3.connect('example.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, location, description FROM items")
+    rows = cursor.fetchall()
+    conn.close()
+
+    items = [ItemDto(name=row[0], location=row[1], description=row[2]) for row in rows]
+    return items
+
+items = fetch_items_from_db()
+for item in items:
+    print(item)
+
+
+"""
+Calculating Tasks
+a = datetime.datetime.now()
+b = datetime.datetime.now()
+c = b - a
+# c.days, c.seconds
+print(f"{c.seconds}")
+print(f"{c.microseconds}")
+"""

@@ -5,6 +5,7 @@ import hashlib
 import uuid
 from uuid import UUID
 from operator import concat
+import requests
 
 # https://docs.python.org/3/library/hashlib.html
 def generate_token( attrib1: str,attrib2: str,attrib3: str,
@@ -39,6 +40,16 @@ def generate_guid(data_attribute: str)-> UUID:
     random_uuid = uuid.uuid4()
     # Print the UUID
     return random_uuid
+
+def request_bearer_token(url, user_name, password):
+    auth_url = url
+    auth_data = {
+        'username': user_name,
+        'password': password
+    }
+    response = requests.post(auth_url, data=auth_data)
+    token = response.json().get('access_token')
+    return token
 
 if __name__ == '__main__':
     # Hashcode Generator Example
