@@ -1,13 +1,13 @@
 # Python Imports
 from datetime import datetime
 import os
-import connectors.rdbms.sqlite
-#import connectors.rdbms.postgresql
-#import connectors.rdbms.sqlserver
+
 # Platform Imports
 import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
+import common.platform_modules
+from common.platform_modules import load_syntheticdata_generators
 
 def main():
     # Set Platform Variables
@@ -16,17 +16,13 @@ def main():
     platform_settings = build_platform_config(platform_vars.local_database_path);
     # Evaluating Need - Connect to platform datatier
     print("Next Step is modules")
-    # sql_connection = create_datatier_connectivity(datatier_technologies, local_database_path)
     # Build out component that drives data from datatier based on platform_operation
     # for platform_operation of syntheticdata_generation we need to leverage the platform_datageneration
     # Table for all records with status = 1 (active)
+    datarows = load_syntheticdata_generators(platform_vars, platform_settings)
     print("Program Ended")
 
-def create_datatier_connectivity(datatier_technologies, local_database_path=None):
-    if datatier_technologies == 'sqlite':
-        sql_connection = connectors.rdbms.sqlite.connect(local_database_path)
-    if datatier_technologies == 'sqlserver':
-        sql_connection = connectors.rdbms.sqlserver.create_conn()
+
     
 
 if __name__ == "__main__":

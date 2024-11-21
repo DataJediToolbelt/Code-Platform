@@ -3,12 +3,12 @@ from datetime import datetime
 import os
 
 # https://www.bing.com/search?q=sqlite+in+python&qs=OS&pq=sqllite+in+python&sc=10-17&cvid=0165D0DB98654814A260D50970313E58&FORM=QBRE&sp=1&ghc=1&lq=0
-def connect(db_location):
-    print(f"Connection to Local SQLite Started at {datetime.now()}")
+def connect(db_location)->sqlite3.Connection:
+    #print(f"Connection to Local SQLite Started at {datetime.now()}")
     sql_connection = None
-    # Connect to a SQLite database
     try:
-        sql_connection = sqlite3.connect(db_location+'datajeditoolbelt.db')
+        #sql_connection = sqlite3.connect(db_location+'datajeditoolbelt.db')
+        sql_connection = sqlite3.connect(db_location + 'datajeditoolbelt.db')
         # Create a cursor object using the cursor() method
         #cursor = sql_connection.cursor()
         # Query data
@@ -37,3 +37,4 @@ if __name__ == "__main__":
     local_database_path = local_path + os.sep + "platform_data_local" + os.sep
     # Database Connection
     sql_connection = connect(local_database_path)
+    print(f"Connection to Local SQLite Ended at {datetime.now()}")
