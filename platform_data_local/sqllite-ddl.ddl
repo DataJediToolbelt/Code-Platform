@@ -20,10 +20,17 @@ create table main.configuration_datasources
     registeredapp_guid      TEXT
 );
 
-drop table if exists configuration_settings;
-create table configuration_settings
+drop table if exists configuration_details;
+create table configuration_details
 (
     config_param_name TEXT,
     config_param_type TEXT,
     config_detail     TEXT
+);
+
+drop table if exists platform_operations
+create table platform_operations
+(
+    operation_name TEXT,
+    operation_desc TEXT
 );

@@ -34,7 +34,6 @@ def build_platform_config(db_location)->platform_settings:
     # loop through the rows
     for row in result:
         rowDetails = data_classes.configurations.configuration_details(row[0],row[1])
-
     for list_dtl in result:
         for split_list in list_dtl:
             print(split_list)
