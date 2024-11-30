@@ -21,6 +21,24 @@ def connect(db_location)->sqlite3.Connection:
     finally:
         return sql_connection
 
+def connect_configuration(db_location)->sqlite3.Connection:
+    #print(f"Connection to Local SQLite Started at {datetime.now()}")
+    sql_connection = None
+    try:
+        #sql_connection = sqlite3.connect(db_location+'datajeditoolbelt.db')
+        sql_connection = sqlite3.connect(db_location + 'platform.db')
+        # Create a cursor object using the cursor() method
+        #cursor = sql_connection.cursor()
+        # Query data
+        #cursor.execute("SELECT * FROM datamodel_datatables")
+        #rows = cursor.fetchall()
+        #for row in rows:
+        #    print(row)
+    except sqlite3.Error as error:
+        print("Error while connecting to sqlite", error)
+    finally:
+        return sql_connection
+
 if __name__ == "__main__":
     start_time = datetime.now()
     component_name = "platform_processor"

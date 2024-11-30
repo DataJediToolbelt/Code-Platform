@@ -7,7 +7,7 @@ import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 import common.platform_modules
-from common.platform_modules import load_syntheticdata_generators
+from common.platform_modules import create_datatier_config
 
 def main():
     # Set Platform Variables
@@ -19,7 +19,8 @@ def main():
     # Build out component that drives data from datatier based on platform_operation
     # for platform_operation of syntheticdata_generation we need to leverage the platform_datageneration
     # Table for all records with status = 1 (active)
-    datarows = load_syntheticdata_generators(platform_vars, platform_settings)
+    # Need to ensure we have the correct db setting is definef
+    datarows = create_datatier_config(platform_vars, platform_settings)
     print("Program Ended")
 
 

@@ -27,7 +27,7 @@ def build_platform_config(db_location)->platform_settings:
     referenceapp_guid = None
     organization_guid = None
     #Code
-    con = sqlite3.connect(db_location+"configuration.db")
+    con = sqlite3.connect(db_location+"platform.db")
     cur = con.cursor()
     cur.execute("SELECT * FROM configuration_details")
     result= cur.fetchall()
