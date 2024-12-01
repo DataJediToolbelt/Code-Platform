@@ -1,49 +1,51 @@
 import data_classes.audting_errorhandling as auditdetails
 import datetime
-import pymssql
 import sqlite3
 
-def process_auditerror_details(platform_vars, platform_settings, auditerror_type):
-    #event_type, component_name, run_datetime, processing_object_name,
-    #operation_name, data, processing_start_time, processing_end_time,
-    #object_elapsed_time_seconds, object_elapsed_time_milliseconds
+def process_auditerror_details(platform_vars, platform_settings, auditerror_type, component_name,
+                               processed_objectname, operation_name, processing_object_name, transaction_count,
+                               start_datetime,end_datetime,error_id, error_desc,audit_details):
+    time_details = datetime.datetime.now()
 
     auditdetails
     auditdetails.event_type = auditerror_type
     auditdetails.event_datetime = datetime.datetime.now()
-    #auditdetails.component_name = component_name
-    #auditdetails.processing_run_datetime = run_datetime
-    # auditdetails.processing_objectname = processing_object_name
-    # auditdetails.operation_name = operation_name
-    # auditdetails.event_special_comments = data
-    # auditdetails.processing_start_time = processing_start_time
-    # auditdetails.processing_end_time = processing_end_time
-    # auditdetails.processing_duration_time_seconds = object_elapsed_time_seconds
-    # auditdetails.processing_duration_time_milliseconds = object_elapsed_time_milliseconds
+    auditdetails.event_date = time_details.date()
+    auditdetails.event_time = time_details.time()
+    auditdetails.component_name = component_name
+    auditdetails.processed_objectname = processed_objectname
+    auditdetails.operation_name = operation_name
+    auditdetails.transaction_count = transaction_count
+    auditdetails.start_datetime = start_datetime
+    auditdetails.end_datetime = end_datetime
+    auditdetails.error_id = error_id
+    auditdetails.error_desc = error_desc
+    auditdetails.audit_details = audit_details
 
     try:
         # Connect to a defined SQL Server database
         #rdbms_connection = pymssql.connect("bluekc-ea.database.windows.net", "eaAdmin", "@Blue!EA9", "indepth",as_dict=True)
         if (platform_settings.auditing == True):
             # SQLite
-            if (platform_settings.auditing_database_type == "sqlite"):
+            if (platform_settings.auditing_datatier == "sqlite"):
                 rdbms_connection = sqlite3.connect(platform_vars.local_database_path + "error_auditing.db")
                 cur = rdbms_connection.cursor()
                 # Build Insert Statement
-                sqlQuery = ("insert into error_auditing (audit_type,  audit_datetime,  audit_component, "
-                            "processed_object,  audit_operationname, audit_details,  processing_starttime, "
-                            "processing_endtime, processing_duration_seconds, processing_duration_milliseconds)  values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
-                val = (auditdetails.event_type,  auditdetails.event_datetime, auditdetails.component_name,
-                       auditdetails.processing_objectname, auditdetails.operation_name, auditdetails.event_special_comments,
-                       auditdetails.processing_start_time, auditdetails.processing_end_time, auditdetails.processing_duration_time_seconds,
-                       auditdetails.processing_duration_time_milliseconds)
+                sqlQuery = '''insert into error_auditing(audit_type, audit_datetime,audit_date, audit_time,
+                audit_component, processed_object,transaction_count,audit_details,error_id,
+                error_desc,start_datetime,end_datetime,audit_operation) values (?,?,?,?,?,?,?,?,?,?,?,?,?)'''
+                val = (auditdetails.event_type,auditdetails.event_datetime,auditdetails.event_date,
+                       str(auditdetails.event_time),auditdetails.component_name,
+                       auditdetails.processed_objectname,auditdetails.transaction_count,
+                       auditdetails.audit_details,auditdetails.error_id, auditdetails.error_desc,
+                       auditdetails.start_datetime, auditdetails.end_datetime,auditdetails.operation_name)
                 print(f"SQL String: ", sqlQuery)
                 print(f"Values Inserting: ", val)
                 cur.execute(sqlQuery, val)
                 rdbms_connection.commit()
                 print(f"SQL Insert Operation - Completed")
     except (Exception) as error:
-        print("Error while connecting to MS SQL Server", error)
+        print("Error while Inserting Auditing Record", error)
     finally:
         rdbms_connection.close()
 

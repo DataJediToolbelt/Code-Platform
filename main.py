@@ -1,6 +1,9 @@
 # Python Imports
 from datetime import datetime
 import os
+
+from pandas.core.arraylike import array_ufunc
+
 # Platform Imports
 
 import connectors.rdbms.sqlite
@@ -16,11 +19,20 @@ from common.error_audit_mgmt import process_auditerror_details
 
 def main():
     # Set Platform Variables
+    start_datetime = datetime.now()
     local_database_path = os.getcwd() + os.sep + "platform_data_local" + os.sep
     platform_vars = build_platform_variables();
     # Pull in platform configuration settings from configuration database
     platform_settings = build_platform_config(platform_vars.local_database_path);
-    process_auditerror_details(platform_vars, platform_settings,"audit")
+    # platform_vars, platform_settings, auditerror_type, component_name,
+    #                                operation_name, processing_object_name, transaction_count,
+    #                                start_datetime,end_datetime,error_id, error_desc):
+    process_auditerror_details(platform_vars, platform_settings,auditerror_type="audit",
+                               component_name="platform_startup",operation_name="load_settings",
+                               processing_object_name=None, start_datetime=start_datetime,
+                               end_datetime=datetime.now(),transaction_count=0,error_id="NA",
+                               error_desc="NA",processed_objectname="NA", audit_details="NA")
+
     #datarows = load_platform_capabilities(platform_vars, platform_settings)
     # Create a connection to the data tier based on settings
     if (platform_settings.datatier_technologies == "postgresql"):
