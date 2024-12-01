@@ -29,6 +29,8 @@ def build_platform_config(local_database_path)->platform_settings:
     referenceapp_guid = None
     organization_guid = None
     auditing = None
+    auditing_datatier = None
+    auditing_platform_datatier = None
 
     #Code
     con = sqlite3.connect(local_database_path+"platform.db")
@@ -57,6 +59,10 @@ def build_platform_config(local_database_path)->platform_settings:
             referenceapp_guid = attrib_value
         if (attrib == 'organization_guid'):
             organization_guid = attrib_value
+        if (attrib == 'auditing_datatier'):
+            auditing_datatier = attrib_value
+        if (attrib == 'auditing_platform_datatier'):
+            auditing_platform_datatier = attrib_value
     # Populate Dataclass
     platform_settings = data_classes.platform.platform_settings(output_settings=output_settings,
                                                              platform_operation_name=platform_operation_name,
@@ -64,7 +70,9 @@ def build_platform_config(local_database_path)->platform_settings:
                                                              datatier_technologies=datatier_technologies,
                                                              platform_datatier=platform_datatier,
                                                              referenceapp_guid=referenceapp_guid,
-                                                             organization_guid=organization_guid)
+                                                             organization_guid=organization_guid,
+                                                             auditing_datatier=auditing_datatier,
+                                                             auditing_platform_datatier=auditing_platform_datatier)
     #return(result)
     return platform_settings
 
