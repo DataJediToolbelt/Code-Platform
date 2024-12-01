@@ -26,14 +26,15 @@ def main():
     # Evaluating Need - Connect to platform datatier
     print("Next Step is available modules")
     # Build out component that drives data from local data tier
-    datarows = load_platform_capabilities(platform_vars, platform_settings)
-    # for platform_operation of syntheticdata_generation we need to leverage the platform_datageneration
-    # Table for all records with status = 1 (active)
-    # Need to ensure we have the correct db setting is define
-    #sqlite_sql_connection = return_connection(local_database_path)
-    # Connect to DataJediToiolbelt
+    #datarows = load_platform_capabilities(platform_vars, platform_settings)
+
     if (platform_settings.datatier_technologies == "postgresql"):
+        # Create a connection to the data tier based on settings
         postgres_sql_connection = connectors.rdbms.postgresql.create_connection(platform_settings.platform_datatier);
+        # for platform_operation of syntheticdata_generation we need to leverage the platform_datageneration
+        # Table for all records with status = 1 (active)
+        # Need to ensure we have the correct db setting is define
+        #sqlite_sql_connection = return_connection(local_database_path)
     if (platform_settings.datatier_technologies == "sqlserver"):
         print("SQL Server not yet supported")
     print("Program Ended")
