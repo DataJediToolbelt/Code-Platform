@@ -1,36 +1,37 @@
-drop table if exists main.configuration_datasources;
-create table main.configuration_datasources
+drop table if exists main.configuration_details;
+create table main.configuration_details
 (
-    datasources_id integer
-        primary key autoincrement,
-    datasource_name         TEXT,
-    datasource_type         TEXT,
-    created_date            TEXT    default (datetime('now', 'localtime')),
-    status_id               integer default 1,
-    host TEXT,
-    port INT,
-    additional_details TEXT,
-    custom_url TEXT,
-    app_token TEXT,
-    custom_token TEXT,
-    bearer_token TEXT,
-    uid            TEXT,
-    pwd TEXT,
-    organization_guid       TEXT,
-    registeredapp_guid      TEXT
+    config_param_name varchar(49) primary key,
+    config_param_type varchar(19),
+    config_detail     varchar(129)
 );
 
-drop table if exists configuration_details;
-create table configuration_details
+drop table if exists main.platform_datasources;
+create table main.platform_datasources
 (
-    config_param_name TEXT,
-    config_param_type TEXT,
-    config_detail     TEXT
+    datasources_id     integer primary key autoincrement,
+    datasource_name    varchar(49),
+    datasource_type    varchar(79),
+    created_date      varchar(20)    default (datetime('now', 'localtime')),
+    status_id          varchar(10) DEFAULT 'Active"',
+    host               varchar(99),
+    port               INT,
+    additional_details varchar(129),
+    custom_url         varchar(129),
+    app_token          varchar(256),
+    custom_token       varchar(256),
+    bearer_token       varchar(256),
+    uid                varchar(99),
+    pwd                varchar(79),
+    organization_guid  varchar(38),
+    registeredapp_guid varchar(38)
 );
 
-drop table if exists platform_operations
-create table platform_operations
+drop table if exists main.platform_operations;
+create table main.platform_operations
 (
-    operation_name TEXT,
-    operation_desc TEXT
+    operation_name varchar(39) primary key,
+    operation_desc varchar(99),
+    status_id      varchar(10)
 );
+
