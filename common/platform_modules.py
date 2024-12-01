@@ -35,8 +35,8 @@ def load_platform_capabilities(platform_vars, platform_settings):
             # Query data
             cursor.execute("SELECT * FROM platform_operations")
             rows = cursor.fetchall()
-            for row in rows:
-                print(row)
+            #for row in rows:
+                # print(row)
     except Exception as e:
         print("Error while connecting to database and returning data", e)
     finally:
