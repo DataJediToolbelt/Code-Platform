@@ -35,7 +35,7 @@ def main():
     if (platform_settings.datatier_technologies == "postgresql"):
         postgres_sql_connection = connectors.rdbms.postgresql.create_connection(platform_settings.platform_datatier);
     if (platform_settings.datatier_technologies == "sqlserver"):
-        print("SQL Server work TBD")
+        print("SQL Server not yet supported")
     print("Program Ended")
 
 if __name__ == "__main__":
