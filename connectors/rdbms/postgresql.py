@@ -3,6 +3,17 @@ from datetime import datetime
 import os
 import psycopg
 from psycopg import Error
+from datetime import datetime
+# Platform Imports
+import connectors.rdbms.sqlite
+from connectors.rdbms.sqlite import return_connection
+import common.platform_modules
+from common.platform_modules import load_platform_capabilities
+import common.platform_settings
+from common.platform_settings import build_platform_variables
+from common.platform_settings import build_platform_config
+import common.error_audit_mgmt
+from common.error_audit_mgmt import process_auditerror_details
 
 def create_connection(connection_string):
     try:
@@ -40,19 +51,13 @@ def close_connection(postgres_connection):
         
 if __name__ == "__main__":
     start_time = datetime.now()
-    component_name = "postgresql_connect"
-    processing_run_datetime = datetime.now()
     print(f"Connection to Postgres started at {datetime.now()}")
-    processing_objectname = ""
-    operation_name = None
-    output_settings = None
-    auditing = True
-    datatier_technologies = None
-    platform_datatier = None
+    start_datetime = datetime.now()
+    local_database_path = os.getcwd() + os.sep + "platform_data_local" + os.sep
+    platform_vars = build_platform_variables();
+    # Pull in platform configuration settings from configuration database
+    platform_settings = build_platform_config(platform_vars.local_database_path);
     # Local Variables
-    #local_path = (os.getcwd())
-    #local_path = local_path[:-16]
-    # ocal_database_path = local_path + os.sep + "platform_data_local" + os.sep
     # Database Connection
-    sql_connection =  create_connection()
+    sql_connection =  create_connection(platform_settings.platform_datatier)
     print(f"Connection to Postgres at {datetime.now()}")

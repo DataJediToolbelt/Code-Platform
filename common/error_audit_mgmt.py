@@ -3,10 +3,10 @@ import datetime
 import sqlite3
 
 def process_auditerror_details(platform_vars, platform_settings, auditerror_type, component_name,
-                               processed_objectname, operation_name, processing_object_name, transaction_count,
+                               processed_objectname, operation_name, transaction_count,
                                start_datetime,end_datetime,error_id, error_desc,audit_details):
-    time_details = datetime.datetime.now()
 
+    time_details = datetime.datetime.now()
     auditdetails
     auditdetails.event_type = auditerror_type
     auditdetails.event_datetime = datetime.datetime.now()
