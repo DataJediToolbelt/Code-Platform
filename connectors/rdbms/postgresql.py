@@ -22,9 +22,9 @@ def create_connection(connection_string):
 
         # Connect to an existing database
         #conStr = "postgres://postgres:@localhost:5432/datajeditoolbelt"
-        postgres_connection = psycopg.connect(connection_string)
+        rdbms_connection = psycopg.connect(connection_string)
         # Create a cursor to perform database operations
-        cursor = postgres_connection.cursor()
+        cursor = rdbms_connection.cursor()
         # Print PostgreSQL details
         print("PostgreSQL server information")
         #print(postgres_connection.get_dsn_parameters(), "\n")
@@ -36,18 +36,18 @@ def create_connection(connection_string):
     except (Exception, Error) as error:
         print("Error while connecting to PostgreSQL", error)
     finally:
-        if (postgres_connection):
+        if (rdbms_connection):
             cursor.close()
-    return postgres_connection
+    return rdbms_connection
 
-def close_connection(postgres_connection):
+def close_connection(rdbms_connection):
     try:
-        postgres_connection.close()
+        rdbms_connection.close()
         print("PostgreSQL connection is closed")
     except (Exception, Error) as error:
         print("Error while closing connection to PostgreSQL", error)
     finally:
-        postgres_connection.close()
+        rdbms_connection.close()
         
 if __name__ == "__main__":
     start_time = datetime.now()
@@ -59,5 +59,5 @@ if __name__ == "__main__":
     platform_settings = build_platform_config(platform_vars.local_database_path);
     # Local Variables
     # Database Connection
-    sql_connection =  create_connection(platform_settings.platform_datatier)
+    rdbms_connection =  create_connection(platform_settings.platform_datatier)
     print(f"Connection to Postgres at {datetime.now()}")

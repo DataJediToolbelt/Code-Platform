@@ -5,6 +5,7 @@ import os
 import connectors.rdbms.sqlite
 from connectors.rdbms.sqlite import return_connection
 from connectors.rdbms.postgresql import create_connection
+from connectors.rdbms.sqlserver import create_connection
 import common.platform_modules
 from common.platform_modules import load_platform_capabilities
 import common.platform_settings
@@ -27,11 +28,12 @@ def main():
                                error_desc="NA",processed_objectname="NA", audit_details="NA")
     #datarows = load_platform_capabilities(platform_vars, platform_settings)
     # Create a connection to the data tier based on settings
+    rdbms_connection = None
     if (platform_settings.datatier_technologies == "postgresql"):
-        postgres_sql_connection = connectors.rdbms.postgresql.create_connection(platform_settings.platform_datatier);
+        rdbms_connection = connectors.rdbms.postgresql.create_connection(platform_settings.platform_datatier);
         # for platform_operation of syntheticdata_generation we need to leverage the platform_datageneration
     if (platform_settings.datatier_technologies == "sqlserver"):
-        print("SQL Server not yet supported")
+        rdbms_connection = connectors.rdbms.sqlserver.create_connection(platform_settings.platform_datatier);
     print("Program Ended")
 
 def localdb_capabilities():
