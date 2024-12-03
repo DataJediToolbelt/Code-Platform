@@ -14,5 +14,5 @@ create table main.ERROR_AUDITING
     AUDIT_DATETIME    VARCHAR(40),
     START_DATETIME    varchar(30),
     END_DATETIME      varchar(30),
-    AUDIT_OPERATION   varchar(49)
+    AUDIT_OPERATION   varchar(99)
 );
