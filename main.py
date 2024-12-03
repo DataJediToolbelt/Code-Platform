@@ -41,7 +41,7 @@ def main():
                                    error_desc="NA", processed_objectname="NA", audit_details="NA")
         # Do platform_operation activities
         if (platform_settings.platform_operation_name == "data_synthetic_generation"):
-            list_generated_dataneeds = platform.query_datatierdata_general_activerecords(platform_vars=platform_vars,
+            list_generated_dataneeds = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
                     platform_settings= platform_settings, sql_connection=rdbms_connection, table_name="platform_datageneration_dataattributes")
             print("")
         elif(platform_settings.platform_operation_name == ""):
