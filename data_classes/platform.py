@@ -22,3 +22,5 @@ class platform_settings:
         platform_datatier: str
         referenceapp_guid: str
         organization_guid: str
+        auditing_datatier: str
+        auditing_platform_datatier: str

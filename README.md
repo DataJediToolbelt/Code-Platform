@@ -34,10 +34,19 @@ https://python.land/virtual-environments/virtualenv
 We used the simple command (while within the specific project directory): python -m venv venv
 
 #### MacOS and Linux
-source ./venv/bin/activate
+
+` source ./venv/bin/activate
+`
 
 #### Windows
-source .\venv\bin\activate
+
+`
+source .\venv\bin\activate.bat
+`
+or
+`
+source .\venv\bin\activate.ps1
+`
 
 ## Libraries Implemented
 This section is intended to show any non-builtin/included Python libraries. These are the core

@@ -6,29 +6,29 @@ class Audit_ErrorHandling:
         name: str
         event_type: str
         event_datetime: str
+        event_date: str
+        event_time: str
         component_name: str
-        processing_run_datetime: str
         operation_name: str
-        processing_objectname: str
-        event_count: str
-        event_output: str
+        transaction_count: int
+        processed_objectname: str
         event_special_comments: str
-        processing_start_time: str
-        processing_end_time: str
-        processing_duration_time_seconds: str
-        processing_duration_time_milliseconds: str
+        start_datetime: str
+        end_datetime: str
+        error_id: str
+        error_desc: str
+        audit_details: str
 
-        def __init__(self):
-            self.event_type = None
-            self.event_datetime = None
-            self.component_name = None
-            self.processing_run_datetime = None
-            self.operation_name = None
-            self.processing_objectname = None
-            self.event_count = None
-            self.event_output = None
-            self.event_special_comments = None
-            self.processing_start_time = None
-            self.processing_end_time = None
-            self.processing_duration_time_seconds = None
-            self.processing_duration_time_milliseconds = None
+        # def __init__(self):
+        #     self.event_type = None
+        #     self.event_datetime = None
+        #     self.component_name = None
+        #     self.operation_name = None
+        #     self.processed_objectname = None
+        #     self.event_count = 0
+        #     self.event_output = None
+        #     self.event_special_comments = None
+        #     self.start_datetime = None
+        #     self.end_datetime = None
+        #     self.erorr_id = None
+        #     self.error_desc = None
