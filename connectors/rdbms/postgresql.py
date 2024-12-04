@@ -12,8 +12,8 @@ from common.platform_modules import load_platform_capabilities
 import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.error_audit_mgmt
-from common.error_audit_mgmt import process_auditerror_details
+import common.auditerror_mgmt
+from common.auditerror_mgmt import process_auditerror_details
 
 def create_connection(connection_string):
     try:

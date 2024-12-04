@@ -11,8 +11,8 @@ from common.platform_modules import load_platform_capabilities
 import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.error_audit_mgmt
-from common.error_audit_mgmt import process_auditerror_details
+import common.auditerror_mgmt
+from common.auditerror_mgmt import process_auditerror_details
 
 # https://www.geeksforgeeks.org/python-build-a-rest-api-using-flask/#
 # https://medium.com/@CleytonBonamigo/building-a-flask-api-a-step-by-step-guide-e73345717b52

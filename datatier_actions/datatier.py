@@ -8,8 +8,8 @@ from common.platform_modules import load_platform_capabilities
 import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.error_audit_mgmt
-from common.error_audit_mgmt import process_auditerror_details
+import common.auditerror_mgmt
+from common.auditerror_mgmt import process_auditerror_details
 
 def query_datatierdata_general(platform_vars, platform_settings, sql_connection, table_name)->list:
     try:
@@ -57,13 +57,17 @@ def query_datatierdata_general_activerecords(platform_vars, platform_settings, s
         sql_cursor.close()
         return data_dtls
 
-def insert_datatier()->None:
+def insert_datatier_crawlers()->None:
     print(f"Starting Insert/Upsert Operation")
 
-def insert_datatier_datastructure()->None:
+
+def insert_datatier_sdp_dataattributes()->None:
     print(f"Starting Insert/Upsert Operation")
 
-def insert_datatier_datastructure_dtl()->None:
+def insert_datatier_sdp_datastructure()->None:
+    print(f"Starting Insert/Upsert Operation")
+
+def insert_datatier_tokens()->None:
     print(f"Starting Insert/Upsert Operation")
 
 if __name__ == "__main__":

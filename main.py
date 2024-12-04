@@ -3,19 +3,16 @@ from datetime import datetime
 import os
 # Platform Imports
 import connectors.rdbms.sqlite
-from connectors.rdbms.sqlite import return_connection
 from connectors.rdbms.postgresql import create_connection
 from connectors.rdbms.sqlserver import create_connection
-import common.platform_modules
-from common.platform_modules import load_platform_capabilities
 import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.error_audit_mgmt
-from common.error_audit_mgmt import process_auditerror_details
+import common.auditerror_mgmt
+from common.auditerror_mgmt import process_auditerror_details
 import datatier_actions
-from datatier_actions import datatier
 from datatier_actions import platform
+import common.platform_modules
 
 def main():
     # Set Platform Variables
@@ -29,7 +26,6 @@ def main():
                                start_datetime=start_datetime, end_datetime=datetime.now(),
                                transaction_count=0,error_id="NA",
                                error_desc="NA",processed_objectname="NA", audit_details="NA")
-    #datarows = load_platform_capabilities(platform_vars, platform_settings)
     # Create a connection to the data tier based on settings
     rdbms_connection = None
     if (platform_settings.datatier_technologies == "postgresql"):
@@ -41,8 +37,9 @@ def main():
                                    error_desc="NA", processed_objectname="NA", audit_details="NA")
         # Do platform_operation activities
         if (platform_settings.platform_operation_name == "data_synthetic_generation"):
-            list_generated_dataneeds = platform.query_platformdata_general_activerecords(platform_vars = platform_vars,
+            list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars = platform_vars,
                     platform_settings = platform_settings, sql_connection=rdbms_connection, table_name="platform_datageneration_dataattributes")
+            # Invoke common.platform_modules.data_generation_processor
             print("")
         elif(platform_settings.platform_operation_name == ""):
             print("No Operation Defined")
