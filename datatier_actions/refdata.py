@@ -118,7 +118,7 @@ def insert_refdata_vendors()->None:
 
 if __name__ == "__main__":
     start_datetime = datetime.now()
-    local_database_path = os.getcwd() + os.sep + "platform_data_local" + os.sep
+    local_database_path = os.getcwd() + os.sep + "datatier_local" + os.sep
     platform_vars = build_platform_variables();
     # Pull in platform configuration settings from configuration database
     platform_settings = build_platform_config(platform_vars.local_database_path);

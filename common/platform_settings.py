@@ -2,22 +2,22 @@
 import sqlite3
 from html.parser import attrfind_tolerant
 
-import data_classes.configurations
+import datatier_classes.configurations
 import os
 from datetime import datetime
 # Platform Specific Imports
-import data_classes.platform
-from data_classes.platform import platform_variables
-from data_classes.platform import platform_settings
+import datatier_classes.platform
+from datatier_classes.platform import platform_variables
+from datatier_classes.platform import platform_settings
 
 def build_platform_variables() -> platform_variables:
     # Set Platform Variables
-    platform_vars = data_classes.platform.platform_variables(start_time=datetime.now(),
-                                                             component_name="platform_startup",
-                                                             processing_run_datetime=datetime.now(),
-                                                             processing_objectname=None,
-                                                             local_path=os.getcwd(),
-                                                             local_database_path=os.getcwd() + os.sep + "platform_data_local" + os.sep)
+    platform_vars = datatier_classes.platform.platform_variables(start_time=datetime.now(),
+                                                                 component_name="platform_startup",
+                                                                 processing_run_datetime=datetime.now(),
+                                                                 processing_objectname=None,
+                                                                 local_path=os.getcwd(),
+                                                                 local_database_path=os.getcwd() + os.sep + "datatier_local" + os.sep)
     return platform_vars
 
 def build_platform_config(local_database_path)->platform_settings:
@@ -64,15 +64,15 @@ def build_platform_config(local_database_path)->platform_settings:
         if (attrib == 'auditing_platform_datatier'):
             auditing_platform_datatier = attrib_value
     # Populate Dataclass
-    platform_settings = data_classes.platform.platform_settings(output_settings=output_settings,
-                                                             platform_operation_name=platform_operation_name,
-                                                             auditing=auditing,
-                                                             datatier_technologies=datatier_technologies,
-                                                             platform_datatier=platform_datatier,
-                                                             referenceapp_guid=referenceapp_guid,
-                                                             organization_guid=organization_guid,
-                                                             auditing_datatier=auditing_datatier,
-                                                             auditing_platform_datatier=auditing_platform_datatier)
+    platform_settings = datatier_classes.platform.platform_settings(output_settings=output_settings,
+                                                                    platform_operation_name=platform_operation_name,
+                                                                    auditing=auditing,
+                                                                    datatier_technologies=datatier_technologies,
+                                                                    platform_datatier=platform_datatier,
+                                                                    referenceapp_guid=referenceapp_guid,
+                                                                    organization_guid=organization_guid,
+                                                                    auditing_datatier=auditing_datatier,
+                                                                    auditing_platform_datatier=auditing_platform_datatier)
     #return(result)
     return platform_settings
 

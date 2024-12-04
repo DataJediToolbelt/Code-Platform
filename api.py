@@ -18,7 +18,7 @@ from common.error_audit_mgmt import process_auditerror_details
 # https://medium.com/@CleytonBonamigo/building-a-flask-api-a-step-by-step-guide-e73345717b52
 
 print(f"API Platform Started at {datetime.datetime.now()}")
-local_database_path = os.getcwd() + os.sep + "platform_data_local" + os.sep
+local_database_path = os.getcwd() + os.sep + "datatier_local" + os.sep
 platform_vars = build_platform_variables();
 # Pull in platform configuration settings from configuration database
 platform_settings = build_platform_config(platform_vars.local_database_path);

@@ -1,4 +1,4 @@
-import data_classes.audting_errorhandling as auditdetails
+import datatier_classes.audting_errorhandling as auditdetails
 import datetime
 import sqlite3
 
