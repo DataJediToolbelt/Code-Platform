@@ -31,6 +31,7 @@ def pyodbc_msssql_rdbms_connection(connection_string):
 
 
 def create_connection(connection_string):
+    rdbms_connection = None
     try:
         connString = connection_string.split(':')
         # Connect to a defined SQL Server database
@@ -49,6 +50,6 @@ def create_connection(connection_string):
         return rdbms_connection
 
 if __name__ == "__main__":
-    connection_string = "mssql://sa:Developer123@192.168.1.56:1433/New_DataJediToolbelt"
+    connection_string = "mssql://sa:Developer123@192.168.1.224:1433/New_DataJediToolbelt"
     rdbms_connection = create_connection(connection_string)
     print("Connection Test completed ")
