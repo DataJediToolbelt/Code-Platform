@@ -62,7 +62,7 @@ if __name__ == "__main__":
     # Local Variables
     local_path = (os.getcwd())
     local_path = local_path[:-16]
-    local_database_path = local_path + os.sep + "platform_data_local" + os.sep
+    local_database_path = local_path + os.sep + "datatier_local" + os.sep
     # Database Connection
     #sql_connection =  return_connection(local_database_path)
     print(f"Connection to Local SQLite Ended at {datetime.now()}")

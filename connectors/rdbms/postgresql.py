@@ -12,8 +12,8 @@ from common.platform_modules import load_platform_capabilities
 import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.error_audit_mgmt
-from common.error_audit_mgmt import process_auditerror_details
+import common.auditerror_mgmt
+from common.auditerror_mgmt import process_auditerror_details
 
 def create_connection(connection_string):
     try:
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     start_time = datetime.now()
     print(f"Connection to Postgres started at {datetime.now()}")
     start_datetime = datetime.now()
-    local_database_path = os.getcwd() + os.sep + "platform_data_local" + os.sep
+    local_database_path = os.getcwd() + os.sep + "datatier_local" + os.sep
     platform_vars = build_platform_variables();
     # Pull in platform configuration settings from configuration database
     platform_settings = build_platform_config(platform_vars.local_database_path);

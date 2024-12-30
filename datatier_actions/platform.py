@@ -8,8 +8,8 @@ from common.platform_modules import load_platform_capabilities
 import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.error_audit_mgmt
-from common.error_audit_mgmt import process_auditerror_details
+import common.auditerror_mgmt
+from common.auditerror_mgmt import process_auditerror_details
 
 def query_platformdata_general(platform_vars, platform_settings, sql_connection, table_name)->list:
     try:
@@ -70,7 +70,7 @@ def insert_platform_datastructures_dtl()->None:
 
 if __name__ == "__main__":
     start_datetime = datetime.now()
-    local_database_path = os.getcwd() + os.sep + "platform_data_local" + os.sep
+    local_database_path = os.getcwd() + os.sep + "datatier_local" + os.sep
     platform_vars = build_platform_variables();
     # Pull in platform configuration settings from configuration database
     platform_settings = build_platform_config(platform_vars.local_database_path);

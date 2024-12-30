@@ -1,6 +1,6 @@
 import os
 
-def  create_output(input_type: str, directory_name: str)->None:
+def  create_output_file(input_type: str, directory_name: str)->None:
     current_path = os.getcwd()
     current_output_path = current_path+"\\outputs\\"
     parent_path = os.path.normpath(current_path + os.sep + os.pardir)
