@@ -24,7 +24,6 @@ def process_auditerror_details(platform_vars, platform_settings, auditerror_type
 
     try:
         # Connect to a defined SQL Server database
-        #rdbms_connection = pymssql.connect("bluekc-ea.database.windows.net", "eaAdmin", "@Blue!EA9", "indepth",as_dict=True)
         if (platform_settings.auditing == True):
             # SQLite
             if (platform_settings.auditing_datatier == "sqlite"):

@@ -1,19 +1,13 @@
 # https://pynative.com/python-postgresql-tutorial/#h-verify-psycopg2-installation
-from datetime import datetime
 import os
 import psycopg
 from psycopg import Error
 from datetime import datetime
 # Platform Imports
-import connectors.rdbms.sqlite
-from connectors.rdbms.sqlite import return_connection
-import common.platform_modules
-from common.platform_modules import load_platform_capabilities
-import common.platform_settings
+#from common.platform_modules import load_platform_capabilities
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.auditerror_mgmt
-from common.auditerror_mgmt import process_auditerror_details
+
 
 def create_connection(connection_string):
     try:

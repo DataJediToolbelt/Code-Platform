@@ -1,6 +1,5 @@
 # https://docs.python.org/3/library/sqlite3.html
 import sqlite3
-from html.parser import attrfind_tolerant
 
 import datatier_classes.configurations
 import os

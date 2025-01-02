@@ -1,14 +1,10 @@
 from datetime import datetime
 import os
 # Platform Imports
-import connectors.rdbms.sqlite
-from connectors.rdbms.postgresql import create_connection
-import common.platform_modules
-from common.platform_modules import load_platform_capabilities
-import common.platform_settings
+import connectors.sqlite
+from connectors.postgresql import create_connection
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.auditerror_mgmt
 from common.auditerror_mgmt import process_auditerror_details
 
 def query_datatierdata_general(platform_vars, platform_settings, sql_connection, table_name)->list:
@@ -77,7 +73,7 @@ if __name__ == "__main__":
     # Pull in platform configuration settings from configuration database
     platform_settings = build_platform_config(platform_vars.local_database_path);
     if (platform_settings.datatier_technologies == "postgresql"):
-        postgres_sql_connection = connectors.rdbms.postgresql.create_connection(platform_settings.platform_datatier);
+        postgres_sql_connection = connectors.postgresql.create_connection(platform_settings.platform_datatier);
         #query_refdata_statuses(sql_connection=postgres_sql_connection)
         #create list of all reference tables
         # Omitted - datatier_sdp_dataattributes as it has over 1.58 million recs when loaded
