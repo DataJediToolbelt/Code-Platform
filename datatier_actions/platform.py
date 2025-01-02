@@ -9,6 +9,7 @@ import connectors.sqlserver
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 from common.auditerror_mgmt import process_auditerror_details
+from datatier_classes.platform import platform_datageneration_dataattributes
 
 def query_platformdata_general(platform_vars, platform_settings, sql_connection, table_name)->list:
     try:
@@ -30,6 +31,64 @@ def query_platformdata_general(platform_vars, platform_settings, sql_connection,
     finally:
         sql_cursor.close()
         return data_dtls
+
+def query_platformdata_platformdatagenerationdataattributes_activerecords(platform_vars, platform_settings, sql_connection, table_name)->list:
+    start_datetime = datetime.now()
+    rec_count = 0
+    data_dtls = []
+    data_dtls_output = []
+    try:
+        if platform_settings.datatier_technologies == "sqlite":
+            sql_connection = localdb_connectivity(platform_vars.local_database_path)
+        elif platform_settings.datatier_technologies == "postgresql":
+            load_dotenv()
+            connection_string = os.getenv("Postgresql")
+            sql_connection = connectors.postgresql.create_connection(connection_string)
+        elif platform_settings.datatier_technologies == "sqlserver":
+            load_dotenv()
+            connection_string = os.getenv("SQL_Server")
+            sql_connection = connectors.sqlserver.create_connection(connection_string)
+        # Code
+        sql_cursor = sql_connection.cursor()
+        sql_query = "select * from " + table_name + " where status_id='Active' "
+        sql_cursor.execute(sql_query)
+        data_dtls = sql_cursor.fetchall()
+        rec_count = len(data_dtls)
+
+        for rows in data_dtls:
+            platform_datageneration_dataattributes
+            platform_datageneration_dataattributes.dataattribute_id = rows[0]
+            platform_datageneration_dataattributes.dataattribute_desc = rows[1]
+            platform_datageneration_dataattributes.definition = rows[2]
+            platform_datageneration_dataattributes.dataattribute_id = rows[3]
+            platform_datageneration_dataattributes.maintained_date = rows[4]
+            platform_datageneration_dataattributes.expiration_date = rows[5]
+            platform_datageneration_dataattributes.status_id = rows[6]
+            platform_datageneration_dataattributes.created_user = rows[7]
+            platform_datageneration_dataattributes.quantity = rows[8]
+            platform_datageneration_dataattributes.maxrecords_in_source = rows[9]
+            platform_datageneration_dataattributes.registeredapp_guid = rows[10]
+            platform_datageneration_dataattributes.organization_guid = rows[11]
+            data_dtls_output.append(platform_datageneration_dataattributes)
+
+
+    except Exception as e:
+        # Auditing
+        process_auditerror_details(platform_vars, platform_settings, auditerror_type="errror",
+                                   component_name="platform", operation_name="query_" + table_name + "_activerecs",
+                                   start_datetime=start_datetime, end_datetime=datetime.now(),
+                                   transaction_count=rec_count, error_id="",
+                                   error_desc=e, processed_objectname="NA", audit_details="NA")
+    finally:
+        # Auditing
+        process_auditerror_details(platform_vars, platform_settings, auditerror_type="audit",
+                                   component_name="platform", operation_name="query_" + table_name + "_activerecs",
+                                   start_datetime=start_datetime, end_datetime=datetime.now(),
+                                   transaction_count=rec_count, error_id="NA",
+                                   error_desc="NA", processed_objectname="NA", audit_details="NA")
+        sql_cursor.close()
+        return data_dtls_output
+
 
 def query_platformdata_general_activerecords(platform_vars, platform_settings, sql_connection, table_name)->list:
     start_datetime = datetime.now()

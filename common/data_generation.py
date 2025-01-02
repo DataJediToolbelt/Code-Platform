@@ -1,9 +1,11 @@
 import random
-from sqlite3 import complete_statement
-
 import rstr
 from RegexGenerator import RegexGenerator
 import exrex
+from sqlite3 import complete_statement
+# Code
+from datatier_classes.platform import platform_datageneration_dataattributes
+
 
 def generate_regexp_ind(random_string:str,generated_count:int) ->str:
     pattern = fr'{random_string}'
@@ -11,7 +13,15 @@ def generate_regexp_ind(random_string:str,generated_count:int) ->str:
     random_string: str = exrex.getone(random_string)
     return random_string
 
-def generate_regexp_quantity(random_string:str, generated_count:int) ->str:
+def generate_regexp_quantity(random_string:str, generated_count:int) ->list:
+    pattern = fr'{random_string}'
+    complete_list = []
+    #random_string: str = rstr.xeger(pattern)
+    for i in range(generated_count):
+        complete_list.append(exrex.getone(random_string))
+    return complete_list
+
+def generate_regexp_quantity_withmetadata(random_string:str, generated_count:int) ->list:
     pattern = fr'{random_string}'
     complete_list = []
     #random_string: str = rstr.xeger(pattern)
