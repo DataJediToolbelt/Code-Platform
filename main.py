@@ -5,8 +5,9 @@ import os
 import connectors.sqlite
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-from common.auditerror_mgmt import process_auditerror_details
+from common.auditerror_mgmt import process_auditerror_details, cleanup_auditerror_platform
 from datatier_actions import platform
+from builders.data_generation import generate_data_automated
 
 def main():
     # Set Platform Variables and Platform Settings from configuration database
@@ -15,6 +16,8 @@ def main():
     platform_vars = build_platform_variables();
     # Platform settings from configuration database and Auditing
     platform_settings = build_platform_config(platform_vars.local_database_path);
+    #automated AuditDB cleanup
+    cleanup_auditerror_platform(platform_vars, platform_settings)
     process_auditerror_details(platform_vars, platform_settings, auditerror_type="audit",
                                component_name="platform_startup", operation_name="load_settings",
                                start_datetime=start_datetime, end_datetime=datetime.now(),
@@ -52,6 +55,7 @@ def main():
 
     #Process with the Data Provided
     print("")
+    generate_data_automated(list_data_to_generate)
 
     print("Program Ended")
 

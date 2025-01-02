@@ -24,3 +24,4 @@ class platform_settings:
         organization_guid: str
         auditing_datatier: str
         auditing_platform_datatier: str
+        auditing_days_cleanup: int

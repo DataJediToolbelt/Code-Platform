@@ -30,6 +30,7 @@ def build_platform_config(local_database_path)->platform_settings:
     auditing = None
     auditing_datatier = None
     auditing_platform_datatier = None
+    auditing_days_cleanup = None
 
     #Code
     con = sqlite3.connect(local_database_path+"platform.db")
@@ -62,6 +63,8 @@ def build_platform_config(local_database_path)->platform_settings:
             auditing_datatier = attrib_value
         if (attrib == 'auditing_platform_datatier'):
             auditing_platform_datatier = attrib_value
+        if (attrib == 'auditing_cleanup_days'):
+            auditing_days_cleanup = attrib_value
     # Populate Dataclass
     platform_settings = datatier_classes.platform.platform_settings(output_settings=output_settings,
                                                                     platform_operation_name=platform_operation_name,
@@ -71,7 +74,8 @@ def build_platform_config(local_database_path)->platform_settings:
                                                                     referenceapp_guid=referenceapp_guid,
                                                                     organization_guid=organization_guid,
                                                                     auditing_datatier=auditing_datatier,
-                                                                    auditing_platform_datatier=auditing_platform_datatier)
+                                                                    auditing_platform_datatier=auditing_platform_datatier,
+                                                                    auditing_days_cleanup=auditing_days_cleanup)
     #return(result)
     return platform_settings
 
