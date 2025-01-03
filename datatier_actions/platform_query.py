@@ -129,19 +129,6 @@ def query_platformdata_general_activerecords(platform_vars, platform_settings, s
         return data_dtls
 
 
-def insert_platform_dataattributes()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-def insert_platform_datageneration()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-def insert_platform_datastructures()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-def insert_platform_datastructures_dtl()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-
 def localdb_connectivity(db_location :str)->sqlite3.Connection:
     #print(f"Connection to Local SQLite Started at {datetime.now()}")
     sql_connection = None
