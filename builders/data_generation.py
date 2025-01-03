@@ -1,5 +1,5 @@
 import os
-from common.data_generation import generate_regexp_quantity,generate_regexp_quantity_withmetadata, generate_address_us
+from common.data_generation import generate_regexp_quantity,generate_regexp_quantity_withpersist, generate_address_us
 from datatier_classes.platform import platform_datageneration_dataattributes
 
 def generate_data_automated(platform_datageneration_dataattributes):
@@ -40,5 +40,5 @@ def generate_data_automated(platform_datageneration_dataattributes):
                 registeredapp_guid = datagen_attribute
             if i == 11:
                 organization_guid = datagen_attribute
-                generate_regexp_quantity(random_string=definition,generated_count=quantity)
+                generate_regexp_quantity_withpersist(random_string=definition,generated_count=quantity)
         print("Generated Data")

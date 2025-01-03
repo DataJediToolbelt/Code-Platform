@@ -4,8 +4,8 @@ from RegexGenerator import RegexGenerator
 import exrex
 from sqlite3 import complete_statement
 # Code
-from datatier_classes.platform import platform_datageneration_dataattributes
-
+from datatier_classes.datatier import datatier_sdp_datagenerated
+from datatier_actions.datatier_insert import insert_datatier_sdp_dataattributes
 
 def generate_regexp_ind(random_string:str,generated_count:int) ->str:
     pattern = fr'{random_string}'
@@ -21,15 +21,26 @@ def generate_regexp_quantity(random_string:str, generated_count:int) ->list:
         complete_list.append(exrex.getone(random_string))
     return complete_list
 
-def generate_regexp_quantity_withmetadata(random_string:str, generated_count:int) ->list:
+def generate_regexp_quantity_withpersist(random_string:str, generated_count:int,platform_vars, platform_settings, sql_connection):
     pattern = fr'{random_string}'
     complete_list = []
     #random_string: str = rstr.xeger(pattern)
     for i in range(generated_count):
         complete_list.append(exrex.getone(random_string))
-    return complete_list
 
-def generate_address_us(generate_quantity:int)->str:
+    for detailed_data in complete_list:
+        #Loop Through List and Persist - Need to create and add metadata object
+        datatier_sdp_datagenerated
+        datatier_sdp_datagenerated.dataattribute_id
+        datatier_sdp_datagenerated.datagentype_id
+        datatier_sdp_datagenerated.param_value
+        datatier_sdp_datagenerated.param_value_dtl
+        datatier_sdp_datagenerated.maintained_date
+        datatier_sdp_datagenerated.organization_guid
+        datatier_sdp_datagenerated.referenceapp_guid
+        insert_datatier_sdp_dataattributes(platform_vars, platform_settings, sql_connection)
+
+def generate_address_us(generate_quantity:int,persist_value:str=None)->str:
     complete_address= []
     for i in range(generate_quantity):
         # Base Address Value
@@ -70,6 +81,7 @@ def list_deduplicater_clean(lst)->list:
 
 
 if __name__ == '__main__':
+    print("Generating data...")
     # Individual Generated Data
     #random_string ='^4[0-9]{12}(?:[0-9]{3})?$'
     #random_string ='^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$|^(?!(000|666|9))\d{3}(?!00)/\d{2}(?!0000)\d{4}$'
@@ -88,18 +100,31 @@ if __name__ == '__main__':
     #random_string ='^[0-9]{12}$'
     #returned_data = generate_regexp(random_string)
 
-    # Quantity of Generated Data
-    returned_data = []
-    generate_quantity = 100
+    # Quantity of Generated Data - Only
+    #returned_data = []
+    #generate_quantity = 100
     # Addresses - US
     #returned_data = generate_address_us(generate_quantity=generate_quantity)
     #list_of_values = list_deduplicater_clean(returned_data)
     # Common Generated Types
     # SSN
-    random_string = '^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$'
-    returned_data = generate_regexp_quantity(random_string=random_string, generated_count=generate_quantity)
-    list_of_values = list_deduplicater_clean(returned_data)
+    #random_string = '^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$'
+    #returned_data = generate_regexp_quantity(random_string=random_string, generated_count=generate_quantity)
+    #list_of_values = list_deduplicater_clean(returned_data)
+
+    # Quantity of Generated Data - With persistence
+    #returned_data = []
+    #generate_quantity = 100
+    # Addresses - US
+    #returned_data = generate_address_us(generate_quantity=generate_quantity)
+    # Common Generated Types
+    # SSN
+    #random_string = '^(?!666|000|9\\d{2})\\d{3}-(?!00)\\d{2}-(?!0{4})\\d{4}$'
+    #generate_regexp_quantity_withpersist(random_string=random_string, generated_count=generate_quantity)
+
+    #Addresses - US
+    #returned_data = generate_address_us(generate_quantity=generate_quantity)
+
     #print(f"Data Returned: {returned_data}")
     #print("Initial - List of Values Count:" ,(len(returned_data)))
     #print("List of Values From Deduper Count: "(len(list_of_values)))
-    print((""))

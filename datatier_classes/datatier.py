@@ -12,4 +12,10 @@ class datatier:
 
 @dataclass
 class datatier_sdp_datagenerated:
-    datatier_sdp_datagenerated_name: str
+    dataattribute_id: str
+    datagentype_id:str
+    param_value: str
+    param_value_dtl: str
+    maintained_date: str
+    referenceapp_guid: str
+    organization_guid: str

@@ -6,7 +6,7 @@ import connectors.sqlite
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 from common.auditerror_mgmt import process_auditerror_details, cleanup_auditerror_platform
-from datatier_actions import platform
+#from datatier_actions import platform
 from builders.data_generation import generate_data_automated
 
 def main():
@@ -56,7 +56,7 @@ def main():
         print("No Operation Defined")
 
     #Process with the Data Provided
-    generate_data_automated(list_data_to_generate)
+    generate_data_automated(list_data_to_generate,platform_vars, platform_settings, rdbms_connection)
 
     print("Program Ended")
 

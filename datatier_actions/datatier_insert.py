@@ -11,8 +11,28 @@ def insert_datatier_crawlers()->None:
     print(f"Starting Insert/Upsert Operation")
 
 
-def insert_datatier_sdp_dataattributes()->None:
-    print(f"Starting Insert/Upsert Operation")
+def insert_datatier_sdp_dataattributes(platform_vars, platform_settings, sql_connection)->None:
+    table_name = "datatier_sdp_dataattributes"
+    try:
+        # Auditing
+        start_datetime = datetime.now()
+        # Code To Insert
+
+        # Code to Audit
+        process_auditerror_details(platform_vars, platform_settings, auditerror_type="audit",
+                                       component_name="datatier", operation_name="insert_" + table_name,
+                                       start_datetime=start_datetime, end_datetime=datetime.now(),
+                                       transaction_count=1, error_id="NA",
+                                       error_desc="NA", processed_objectname="NA", audit_details="NA")
+    except Exception as e:
+            print("Exception in query: " + table_name + " - " + "Error Details: " + str(e))
+            process_auditerror_details(platform_vars, platform_settings, auditerror_type="error",
+                                       component_name="datatier", operation_name="insert_" + table_name,
+                                       start_datetime=start_datetime, end_datetime=datetime.now(),
+                                       transaction_count=1, error_id="NA",
+                                       error_desc=e, processed_objectname="NA", audit_details="NA")
+    finally:
+        sql_cursor.close()
 
 def insert_datatier_sdp_datastructure()->None:
     print(f"Starting Insert/Upsert Operation")
