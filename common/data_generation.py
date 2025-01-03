@@ -1,11 +1,14 @@
 import random
+from datetime import datetime
+
 import rstr
 from RegexGenerator import RegexGenerator
 import exrex
-from sqlite3 import complete_statement
+import sqlite3
 # Code
 from datatier_classes.datatier import datatier_sdp_datagenerated
 from datatier_actions.datatier_insert import insert_datatier_sdp_dataattributes
+from datatier_classes.platform import platform_datageneration_dataattributes_ind
 
 def generate_regexp_ind(random_string:str,generated_count:int) ->str:
     pattern = fr'{random_string}'
@@ -16,29 +19,32 @@ def generate_regexp_ind(random_string:str,generated_count:int) ->str:
 def generate_regexp_quantity(random_string:str, generated_count:int) ->list:
     pattern = fr'{random_string}'
     complete_list = []
-    #random_string: str = rstr.xeger(pattern)
+    random_string: str = rstr.xeger(pattern)
     for i in range(generated_count):
         complete_list.append(exrex.getone(random_string))
     return complete_list
 
-def generate_regexp_quantity_withpersist(random_string:str, generated_count:int,platform_vars, platform_settings, sql_connection):
-    pattern = fr'{random_string}'
+def generate_regexp_quantity_withpersist(platform_datageneration_dataattributes_ind, platform_vars, platform_settings, rdbms_connection):
+    pattern = fr'{platform_datageneration_dataattributes_ind.definition}'
     complete_list = []
-    #random_string: str = rstr.xeger(pattern)
-    for i in range(generated_count):
+    random_string: str = rstr.xeger(pattern)
+    for i in range(platform_datageneration_dataattributes_ind.quantity):
         complete_list.append(exrex.getone(random_string))
 
     for detailed_data in complete_list:
         #Loop Through List and Persist - Need to create and add metadata object
         datatier_sdp_datagenerated
-        datatier_sdp_datagenerated.dataattribute_id
-        datatier_sdp_datagenerated.datagentype_id
-        datatier_sdp_datagenerated.param_value
-        datatier_sdp_datagenerated.param_value_dtl
-        datatier_sdp_datagenerated.maintained_date
-        datatier_sdp_datagenerated.organization_guid
-        datatier_sdp_datagenerated.referenceapp_guid
-        insert_datatier_sdp_dataattributes(platform_vars, platform_settings, sql_connection)
+        datatier_sdp_datagenerated.dataattribute_id = platform_datageneration_dataattributes_ind.dataattribute_id
+        datatier_sdp_datagenerated.datagentype_id = platform_datageneration_dataattributes_ind.datagentype_id
+        datatier_sdp_datagenerated.param_value = detailed_data
+        datatier_sdp_datagenerated.param_value_dtl=None
+        datatier_sdp_datagenerated.maintained_date=datetime.now()
+        datatier_sdp_datagenerated.organization_guid = platform_datageneration_dataattributes_ind.organization_guid
+        datatier_sdp_datagenerated.registeredapp_guid = platform_datageneration_dataattributes_ind.registeredapp_guid
+        datatier_sdp_datagenerated.created_user = platform_datageneration_dataattributes_ind.created_user
+        # Insert Record
+        insert_datatier_sdp_dataattributes(datatier_sdp_datagenerated=datatier_sdp_datagenerated, platform_vars=platform_vars,
+                                           platform_settings=platform_settings, rdbms_connection=rdbms_connection)
 
 def generate_address_us(generate_quantity:int,persist_value:str=None)->str:
     complete_address= []
@@ -79,6 +85,16 @@ def list_deduplicater_clean(lst)->list:
     [unique_list.append(item) for item in lst if item not in unique_list]
     return unique_list
 
+def localdb_connectivity(db_location :str)->sqlite3.Connection:
+    #print(f"Connection to Local SQLite Started at {datetime.now()}")
+    sql_connection = None
+    try:
+        sql_connection = sqlite3.connect(db_location + 'datajeditoolbelt.db')
+    except sqlite3.Error as error:
+        print("Error while connecting to sqlite", error)
+    finally:
+        return sql_connection
+
 
 if __name__ == '__main__':
     print("Generating data...")
@@ -101,8 +117,8 @@ if __name__ == '__main__':
     #returned_data = generate_regexp(random_string)
 
     # Quantity of Generated Data - Only
-    #returned_data = []
-    #generate_quantity = 100
+    returned_data = []
+    generate_quantity = 100
     # Addresses - US
     #returned_data = generate_address_us(generate_quantity=generate_quantity)
     #list_of_values = list_deduplicater_clean(returned_data)

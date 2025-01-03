@@ -11,7 +11,7 @@ def insert_datatier_crawlers()->None:
     print(f"Starting Insert/Upsert Operation")
 
 
-def insert_datatier_sdp_dataattributes(platform_vars, platform_settings, sql_connection)->None:
+def insert_datatier_sdp_dataattributes(datatier_sdp_datagenerated, platform_vars, platform_settings, rdbms_connection)->None:
     table_name = "datatier_sdp_dataattributes"
     try:
         # Auditing

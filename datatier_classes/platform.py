@@ -28,10 +28,25 @@ class platform_settings:
 
 @dataclass
 class platform_datageneration_dataattributes:
-        datageneration_id: str
+        datagentype_id: str
+        dataattribute_id: str
         datageneration_desc: str
         definition: str
+        maintained_date: str
+        expiration_date: str
+        status_id: str
+        created_user: str
+        quantity: int
+        maxrecords_in_source: int
+        registeredapp_guid: str
+        organization_guid: str
+
+@dataclass
+class platform_datageneration_dataattributes_ind:
+        datagentype_id: str
         dataattribute_id: str
+        datageneration_desc: str
+        definition: str
         maintained_date: str
         expiration_date: str
         status_id: str

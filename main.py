@@ -6,8 +6,8 @@ import connectors.sqlite
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 from common.auditerror_mgmt import process_auditerror_details, cleanup_auditerror_platform
-#from datatier_actions import platform
-from builders.data_generation import generate_data_automated
+from datatier_actions import platform_query as platform
+from builders.data_generation import generate_data_automated as generate_data
 
 def main():
     # Set Platform Variables and Platform Settings from configuration database
@@ -56,18 +56,10 @@ def main():
         print("No Operation Defined")
 
     #Process with the Data Provided
-    generate_data_automated(list_data_to_generate,platform_vars, platform_settings, rdbms_connection)
+    generate_data(platform_datageneration_dataattributes=list_data_to_generate, platform_vars=platform_vars,
+                  platform_settings=platform_settings, rdbms_connection=rdbms_connection)
 
     print("Program Ended")
 
-
-
 if __name__ == "__main__":
     main()
-    # process_auditerror_details(platform_vars, platform_settings, auditerror_type="audit",
-    #                            component_name=platform_settings.platform_operation_name,
-    #                            operation_name="sqlserver_dbconnect",
-    #                            start_datetime=start_datetime, end_datetime=datetime.now(),
-    #                            transaction_count=0, error_id="NA",
-    #                            error_desc="NA", processed_objectname="NA", audit_details="NA")
-
