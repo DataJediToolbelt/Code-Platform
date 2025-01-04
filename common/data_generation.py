@@ -1,5 +1,6 @@
 import random
 from datetime import datetime
+from sys import exception
 
 import rstr
 from RegexGenerator import RegexGenerator
@@ -25,27 +26,32 @@ def generate_regexp_quantity(random_string:str, generated_count:int) ->list:
     return complete_list
 
 def generate_regexp_quantity_withpersist(platform_datageneration_dataattributes_ind, platform_vars, platform_settings, rdbms_connection):
-    pattern = fr'{platform_datageneration_dataattributes_ind.definition}'
-    complete_list = []
-    random_string: str = rstr.xeger(pattern)
-    for i in range(platform_datageneration_dataattributes_ind.quantity):
-        complete_list.append(exrex.getone(random_string))
+    try:
+        pattern = fr'{platform_datageneration_dataattributes_ind.definition}'
+        # remove first and last character
+        pattern = ''.join(pattern[1:-1])
+        pattern_value = platform_datageneration_dataattributes_ind.definition
+        #pattern =r'{pattern_value}'
+        complete_list = []
+        for i in range(platform_datageneration_dataattributes_ind.quantity):
+            complete_list.append(rstr.xeger(pattern))
 
-    for detailed_data in complete_list:
-        #Loop Through List and Persist - Need to create and add metadata object
-        datatier_sdp_datagenerated
-        datatier_sdp_datagenerated.dataattribute_id = platform_datageneration_dataattributes_ind.dataattribute_id
-        datatier_sdp_datagenerated.datagentype_id = platform_datageneration_dataattributes_ind.datagentype_id
-        datatier_sdp_datagenerated.param_value = detailed_data
-        datatier_sdp_datagenerated.param_value_dtl=platform_datageneration_dataattributes_ind.definition_metadata
-        datatier_sdp_datagenerated.maintained_date=datetime.now()
-        datatier_sdp_datagenerated.organization_guid = platform_datageneration_dataattributes_ind.organization_guid
-        datatier_sdp_datagenerated.registeredapp_guid = platform_datageneration_dataattributes_ind.registeredapp_guid
-        datatier_sdp_datagenerated.created_user = platform_datageneration_dataattributes_ind.created_user
-        # Insert Record
-        insert_datatier_sdp_dataattributes(datatier_sdp_datagenerated=datatier_sdp_datagenerated, platform_vars=platform_vars,
-                                           platform_settings=platform_settings, rdbms_connection=rdbms_connection)
-
+        for detailed_data in complete_list:
+            #Loop Through List and Persist - Need to create and add metadata object
+            datatier_sdp_datagenerated
+            datatier_sdp_datagenerated.dataattribute_id = platform_datageneration_dataattributes_ind.dataattribute_id
+            datatier_sdp_datagenerated.datagentype_id = platform_datageneration_dataattributes_ind.datagentype_id
+            datatier_sdp_datagenerated.param_value = detailed_data
+            datatier_sdp_datagenerated.param_value_dtl=platform_datageneration_dataattributes_ind.definition_metadata
+            datatier_sdp_datagenerated.maintained_date=datetime.now()
+            datatier_sdp_datagenerated.organization_guid = platform_datageneration_dataattributes_ind.organization_guid
+            datatier_sdp_datagenerated.registeredapp_guid = platform_datageneration_dataattributes_ind.registeredapp_guid
+            datatier_sdp_datagenerated.created_user = platform_datageneration_dataattributes_ind.created_user
+            # Insert Record
+            insert_datatier_sdp_dataattributes(datatier_sdp_datagenerated=datatier_sdp_datagenerated, platform_vars=platform_vars,
+                                               platform_settings=platform_settings, rdbms_connection=rdbms_connection)
+    except Exception as e:
+        print(f"Error: on {platform_datageneration_dataattributes_ind.definition}" + str(e))
 def generate_address_us(generate_quantity:int,persist_value:str=None)->str:
     complete_address= []
     for i in range(generate_quantity):
