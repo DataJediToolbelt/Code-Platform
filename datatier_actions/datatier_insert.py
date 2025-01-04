@@ -25,10 +25,11 @@ def insert_datatier_sdp_dataattributes(datatier_sdp_datagenerated, platform_vars
             rdbms_connection = create_connection(connection_string)
             sql_cursor = rdbms_connection.cursor()
             # Build Insert Statement
-            sqlQuery = ''' insert into DATATIER_SDP_DATAATTRIBUTES(DATAATTRIBUTE_ID, DATAGENTYPE_ID, PARAM_VALUE, PARAM_VALUE_METADATA, REGISTEREDAPP_GUID, ORGANIZATION_GUID) 
-            values (?,?,?,?,?,?)'''
+            sqlQuery = ''' insert into DATATIER_SDP_DATAATTRIBUTES (DATAATTRIBUTE_ID, DATAGENTYPE_ID, PARAM_VALUE,
+                                         PARAM_VALUE_METADATA, REGISTEREDAPP_GUID, ORGANIZATION_GUID)
+            values (?,?,?,?,?,?) '''
             val = (datatier_sdp_datagenerated.dataattribute_id, datatier_sdp_datagenerated.datagentype_id,
-                   datatier_sdp_datagenerated.param_value,datatier_sdp_datagenerated.param_value_metadata,
+                   datatier_sdp_datagenerated.param_value,datatier_sdp_datagenerated.param_value_dtl,
                    datatier_sdp_datagenerated.registeredapp_guid,datatier_sdp_datagenerated.organization_guid)
             print(f"SQL String: ", sqlQuery)
             print(f"Values Inserting: ", val)
