@@ -32,6 +32,7 @@ class platform_datageneration_dataattributes:
         dataattribute_id: str
         datageneration_desc: str
         definition: str
+        definition_metadata: str
         maintained_date: str
         expiration_date: str
         status_id: str
@@ -47,6 +48,7 @@ class platform_datageneration_dataattributes_ind:
         dataattribute_id: str
         datageneration_desc: str
         definition: str
+        definition_metadata: str
         maintained_date: str
         expiration_date: str
         status_id: str

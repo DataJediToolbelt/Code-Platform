@@ -6,6 +6,7 @@ from datatier_classes.platform import platform_datageneration_dataattributes_ind
 def generate_data_automated(platform_datageneration_dataattributes, platform_vars, platform_settings, rdbms_connection):
     datageneration_desc = None
     definition = None
+    definition_metadata = None
     dataattribute_id = None
     maintained_date = None
     expiration_date = None
@@ -26,22 +27,24 @@ def generate_data_automated(platform_datageneration_dataattributes, platform_var
             if i == 2:
                 definition = datagen_attribute
             if i == 3:
-                dataattribute_id =datagen_attribute
+                definition_metadata = datagen_attribute
             if i == 4:
-                maintained_date = datagen_attribute
+                dataattribute_id =datagen_attribute
             if i == 5:
-                expiration_date = datagen_attribute
+                maintained_date = datagen_attribute
             if i == 6:
-                status_id = datagen_attribute
+                expiration_date = datagen_attribute
             if i == 7:
-                created_user = datagen_attribute
+                status_id = datagen_attribute
             if i == 8:
-                quantity = datagen_attribute
+                created_user = datagen_attribute
             if i == 9:
-                maxrecords_in_source = datagen_attribute
+                quantity = datagen_attribute
             if i == 10:
-                registeredapp_guid = datagen_attribute
+                maxrecords_in_source = datagen_attribute
             if i == 11:
+                registeredapp_guid = datagen_attribute
+            if i == 12:
                 organization_guid = datagen_attribute
                 # build dataclass to pass into method
                 platform_datageneration_dataattributes_ind
@@ -49,6 +52,7 @@ def generate_data_automated(platform_datageneration_dataattributes, platform_var
                 platform_datageneration_dataattributes_ind.dataattribute_id = dataattribute_id
                 platform_datageneration_dataattributes_ind.dataattribute_desc = datageneration_desc
                 platform_datageneration_dataattributes_ind.definition = definition
+                platform_datageneration_dataattributes_ind.definition_metadata = definition_metadata
                 platform_datageneration_dataattributes_ind.status_id = status_id
                 platform_datageneration_dataattributes_ind.quantity = quantity
                 platform_datageneration_dataattributes_ind.maxrecords_in_source = maxrecords_in_source

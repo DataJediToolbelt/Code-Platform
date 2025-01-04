@@ -37,7 +37,7 @@ def generate_regexp_quantity_withpersist(platform_datageneration_dataattributes_
         datatier_sdp_datagenerated.dataattribute_id = platform_datageneration_dataattributes_ind.dataattribute_id
         datatier_sdp_datagenerated.datagentype_id = platform_datageneration_dataattributes_ind.datagentype_id
         datatier_sdp_datagenerated.param_value = detailed_data
-        datatier_sdp_datagenerated.param_value_dtl=None
+        datatier_sdp_datagenerated.param_value_dtl=platform_datageneration_dataattributes_ind.definition_metadata
         datatier_sdp_datagenerated.maintained_date=datetime.now()
         datatier_sdp_datagenerated.organization_guid = platform_datageneration_dataattributes_ind.organization_guid
         datatier_sdp_datagenerated.registeredapp_guid = platform_datageneration_dataattributes_ind.registeredapp_guid
