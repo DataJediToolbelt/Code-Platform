@@ -1,18 +1,10 @@
 import datetime
-from flask import Flask, jsonify, request
-from flask_restful import Resource, Api
+from flask import Flask
+from flask_restful import Api
 import os
 # Platform Imports
-import connectors.rdbms.sqlite
-from connectors.rdbms.sqlite import return_connection
-from connectors.rdbms.postgresql import create_connection
-import common.platform_modules
-from common.platform_modules import load_platform_capabilities
-import common.platform_settings
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-import common.auditerror_mgmt
-from common.auditerror_mgmt import process_auditerror_details
 
 # https://www.geeksforgeeks.org/python-build-a-rest-api-using-flask/#
 # https://medium.com/@CleytonBonamigo/building-a-flask-api-a-step-by-step-guide-e73345717b52
