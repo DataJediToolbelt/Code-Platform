@@ -4,7 +4,6 @@ import psycopg
 from psycopg import Error
 from datetime import datetime
 # Platform Imports
-#from common.platform_modules import load_platform_capabilities
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 

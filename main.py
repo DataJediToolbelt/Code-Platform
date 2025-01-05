@@ -2,7 +2,6 @@
 from datetime import datetime
 import os
 # Platform Imports
-import connectors.sqlite
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 from common.auditerror_mgmt import process_auditerror_details, cleanup_auditerror_platform
@@ -15,7 +14,7 @@ def main():
     #local_database_path = os.getcwd() + os.sep + "datatier_local" + os.sep
     platform_vars = build_platform_variables();
     # Platform settings from configuration database and Auditing
-    platform_settings = build_platform_config(platform_vars.local_database_path);
+    platform_settings = build_platform_config(platform_vars);
     #automated AuditDB cleanup
     cleanup_auditerror_platform(platform_vars, platform_settings)
     process_auditerror_details(platform_vars, platform_settings, auditerror_type="audit",

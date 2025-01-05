@@ -9,23 +9,26 @@ import sqlite3
 # Code
 from datatier_classes.datatier import datatier_sdp_datagenerated
 from datatier_actions.datatier_insert import insert_datatier_sdp_dataattributes
+from common.auditerror_mgmt import process_auditerror_details
 from datatier_classes.platform import platform_datageneration_dataattributes_ind
 
-def generate_regexp_ind(random_string:str,generated_count:int) ->str:
-    pattern = fr'{random_string}'
-    #random_string: str = rstr.xeger(pattern)
-    random_string: str = exrex.getone(random_string)
-    return random_string
-
 def generate_regexp_quantity(random_string:str, generated_count:int) ->list:
-    pattern = fr'{random_string}'
-    complete_list = []
-    random_string: str = rstr.xeger(pattern)
-    for i in range(generated_count):
-        complete_list.append(exrex.getone(random_string))
-    return complete_list
+    start_datetime = datetime.now()
+    processed_objectname ="generate_regexp_quantity"
+    try:
+        pattern = fr'{random_string}'
+        complete_list = []
+        random_string: str = rstr.xeger(pattern)
+        for i in range(generated_count):
+            complete_list.append(exrex.getone(random_string))
+    except (Exception) as error:
+        print(f"Error: on {random_string}" + str(error))
+    finally:
+        return complete_list
 
 def generate_regexp_quantity_withpersist(platform_datageneration_dataattributes_ind, platform_vars, platform_settings, rdbms_connection):
+    start_datetime = datetime.now()
+    processed_objectname ="generate_regexp_quantity_withpersist"
     try:
         pattern = fr'{platform_datageneration_dataattributes_ind.definition}'
         # remove first and last character
@@ -50,37 +53,53 @@ def generate_regexp_quantity_withpersist(platform_datageneration_dataattributes_
             # Insert Record
             insert_datatier_sdp_dataattributes(datatier_sdp_datagenerated=datatier_sdp_datagenerated, platform_vars=platform_vars,
                                                platform_settings=platform_settings, rdbms_connection=rdbms_connection)
-    except Exception as e:
-        print(f"Error: on {platform_datageneration_dataattributes_ind.definition}" + str(e))
-def generate_address_us(generate_quantity:int,persist_value:str=None)->str:
+    except (Exception) as error:
+        #print(f"Error: on {platform_datageneration_dataattributes_ind.definition}" + str(error))
+        process_auditerror_details(platform_vars, platform_settings, auditerror_type="errror",
+                                   component_name="data_generation", operation_name=processed_objectname,
+                                   start_datetime=start_datetime, end_datetime=datetime.now(),
+                                   transaction_count=1, error_id="",
+                                   error_desc=error, processed_objectname=processed_objectname, audit_details="NA")
+def generate_address_us(platform_vars, platform_settings, generate_quantity:int,persist_value:str=None)->str:
+    start_datetime = datetime.now()
+    processed_objectname ="generate_address_us"
     complete_address= []
-    for i in range(generate_quantity):
-        # Base Address Value
-        # Setup usable params
-        street_directions = ["N", "S", "E", "W", "NE", "NW", "SE", "SW"]
-        street_types = ["Lane", "Way", "Drive", "Avenue"]
-        # Replace this with a list of names
-        street_names = ["Jones", "Smith", "Scott", "Brown", "Williams"]
-        # Randomizers
-        random.seed()
-        random_number_address_number = random.randint(1, 10000)
-        random.seed()
-        random_street_name = random.choice(street_names)
-        random.seed()
-        random_street_direction = random.choice(street_directions)
-        random.seed()
-        random_street_type = random.choice(street_types)
-        random.seed()
-        random_address_type = random.randint(0, 1)
-        # Build Complete Address
-        if random_address_type == 0:
-            address_string = f"{random_number_address_number} {random_street_name} {random_street_type} {random_street_direction}"
-            complete_address.append(address_string)
-        else:
-            address_string = f"{random_number_address_number} {random_street_name} {random_street_type}"
-            complete_address.append(address_string)
-         # Return Value
-    return complete_address
+    try:
+        for i in range(generate_quantity):
+            # Base Address Value
+            # Setup usable params
+            street_directions = ["N", "S", "E", "W", "NE", "NW", "SE", "SW"]
+            street_types = ["Lane", "Way", "Drive", "Avenue", "Street"]
+            # Replace this with a list of names
+            street_names = ["Jones", "Smith", "Scott", "Brown", "Williams"]
+            # Randomizers
+            random.seed()
+            random_number_address_number = random.randint(1, 10000)
+            random.seed()
+            random_street_name = random.choice(street_names)
+            random.seed()
+            random_street_direction = random.choice(street_directions)
+            random.seed()
+            random_street_type = random.choice(street_types)
+            random.seed()
+            random_address_type = random.randint(0, 1)
+            # Build Complete Address
+            if random_address_type == 0:
+                address_string = f"{random_number_address_number} {random_street_name} {random_street_type} {random_street_direction}"
+                complete_address.append(address_string)
+            else:
+                address_string = f"{random_number_address_number} {random_street_name} {random_street_type}"
+                complete_address.append(address_string)
+            # Return Value
+    except (Exception) as error:
+        # print(f"Error: on {platform_datageneration_dataattributes_ind.definition}" + str(error))
+        process_auditerror_details(platform_vars, platform_settings, auditerror_type="errror",
+                                   component_name="operations", operation_name="cleanup_auditerror_platform",
+                                   start_datetime=start_datetime, end_datetime=datetime.now(),
+                                   transaction_count=1, error_id="",
+                                   error_desc=error, processed_objectname=processed_objectname, audit_details="NA")
+    finally:
+        return complete_address
 
 def list_deduplicater_count(lst):
     return any(lst.count(item) > 1 for item in lst)
@@ -91,15 +110,22 @@ def list_deduplicater_clean(lst)->list:
     [unique_list.append(item) for item in lst if item not in unique_list]
     return unique_list
 
-def localdb_connectivity(db_location :str)->sqlite3.Connection:
+def localdb_connectivity(platform_vars,platform_settings,db_location :str)->sqlite3.Connection:
     #print(f"Connection to Local SQLite Started at {datetime.now()}")
+    start_datetime = datetime.now()
+    processed_objectname = "create_connection"
     sql_connection = None
     try:
-        sql_connection = sqlite3.connect(db_location + 'datajeditoolbelt.db')
+        rdbms_connection = sqlite3.connect(db_location + 'datajeditoolbelt.db')
     except sqlite3.Error as error:
-        print("Error while connecting to sqlite", error)
+        process_auditerror_details(platform_vars, platform_settings, auditerror_type="error",
+                                   component_name=processed_objectname, operation_name="RDBMS Connection",
+                                   start_datetime=start_datetime, end_datetime=datetime.now(),
+                                   transaction_count=1, error_id="NA",
+                                   error_desc=error, processed_objectname=processed_objectname + "-" + rdbms_connection,
+                                   audit_details="NA")
     finally:
-        return sql_connection
+        return rdbms_connection
 
 
 if __name__ == '__main__':

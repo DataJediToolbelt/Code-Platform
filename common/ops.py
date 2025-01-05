@@ -22,6 +22,8 @@ def  create_output_file(input_type: str, directory_name: str)->None:
                     f.write(datatier_id+","+name_first+","+gender_name+","+dataattributeid+'\n')
                     f.close()
        except Exception as e:
-                # If it fails, inform the user.
-                print("Error in file outputting " % (output_file, e.strerror))
+            # If it fails, inform the user.
+            print("Error in file outputting " % (output_file, e.strerror))
+       finally:
+           print("")
 

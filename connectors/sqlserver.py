@@ -2,34 +2,6 @@ import pymssql
 from pymssql import Error
 from datetime import time, datetime
 
-# https://learn.microsoft.com/en-us/sql/connect/python/pyodbc/step-3-proof-of-concept-connecting-to-sql-using-pyodbc?view=sql-server-ver16
-
-# SQL Server
-# pymssql
-# https://learn.microsoft.com/en-us/sql/connect/python/pymssql/python-sql-driver-pymssql?view=sql-server-ver16
-# https://pypi.org/project/pymssql/
-# # https://learn.microsoft.com/en-us/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development?view=sql-server-ver16
-# # https://learn.microsoft.com/en-us/sql/connect/python/pymssql/step-3-proof-of-concept-connecting-to-sql-using-pymssql?view=sql-server-ver16#connect-and-query-data
-
-def pyodbc_msssql_rdbms_connection(connection_string):
-    try:
-
-        connString = connection_string.split(':')
-        hostname = connString[2].split('@')[1]
-        uid = connString[1].replace('/', '')
-        pwd = connString[2].split('@')[0]
-        dbname = connString[3].split('/')[1]
-
-        connectionString = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={hostname};DATABASE={dbname};UID={uid};PWD={pwd}'
-
-        rdbms_connection = pymssql.connect(connectionString)
-        print("You are connected to MS SQL Server ")
-    except (Exception, Error) as error:
-        print("Error while connecting to MS SQL Server", error)
-    finally:
-        return rdbms_connection
-
-
 def create_connection(connection_string):
     rdbms_connection = None
     try:

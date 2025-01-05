@@ -3,7 +3,6 @@ import os
 import sqlite3
 from dotenv import load_dotenv, dotenv_values
 # Platform Imports
-#from common.platform_modules import load_platform_capabilities
 import connectors.postgresql
 import connectors.sqlserver
 from common.platform_settings import build_platform_variables
