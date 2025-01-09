@@ -15,7 +15,8 @@ We used the simple command (while within the specific project directory): python
 
 #### MacOS and Linux
 
-` source ./venv/bin/activate
+` 
+source ./venv/bin/activate
 `
 
 #### Windows

@@ -19,7 +19,7 @@ of other industry leading capabilities whether it is command line, websites, API
 
 ## Technology - Legacy
 As we mentioned above we talked about how we did nor really have a consistent approach to technologies used that
-would help us better enable capabilities. Here is the [Legacy Code Details](./Platform-Legacy.md)
+would help us better enable capabilities. Here is the [Legacy Code Details](Platform-Legacy.md)
 
 ## Technology - Future (Python)
 We currently are working to implement all platform technology based capabilities with Python. We have used Python v3.9 
@@ -27,11 +27,20 @@ through various dot releases in 3.12 successfully on multiple operating systems.
 Here is the [Platform future overview](Platform-Python.md).
 
 # Platform
-In order to best explain how the Platform works we have created content
-that explains it. Please start <a href="./Platform-Areas.md" target="_blank">here</a>.
+This initial section covers basic areas of the system.
 
-| Area                        | Link                                            |
-|-----------------------------|-------------------------------------------------|
-| General Basics Details of Platform | [Platform Basics](./Platform-Usage-Basics.md)   |  
-| Web Tier Platform Usage     | [Web Tier](./Platform-Usage-WebTier.md)         |
+| Area                        | Link                                      |
+|-----------------------------|-------------------------------------------|
+| General Basics Details of Platform | [Platform Basics](Platform-Usage-Basics.md) |  
+| Web Tier Platform Usage     | [Web Tier](Platform-Usage-WebTier.md)     |
 
+## Platform Modules
+In order to best explain how the Platform works we have created content that explains it. 
+
+| Area                  | Link                           |
+|-----------------------|--------------------------------|
+| Synthetic Data        | [Basics](Data-SynthethicData.md) |  
+| Data Anonymization    | [Basics](Data-AnonymizingData.md) |
+| Data Deidentification | [Basics](Data-Deidentification.md) |
+| Data Tagging          | [Basics](Data-Tagging.md)      |
+| Data Toeknization     | [Basics](Data-Tokenization.md) |
