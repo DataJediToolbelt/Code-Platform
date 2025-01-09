@@ -6,7 +6,7 @@ from google.oauth2 import service_account
 
 def gcp_authenticate()->credentials:
     # Path to your service account key file
-    key_path = '/Users/alanscott/Downloads/ahc-data-simulator-dev-4f5b94b7b6fa.json'
+    key_path = ''
 
     # Authenticate using the service account
     credentials = service_account.Credentials.from_service_account_file(key_path)
