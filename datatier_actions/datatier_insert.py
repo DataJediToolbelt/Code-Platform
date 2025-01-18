@@ -4,8 +4,8 @@ import sqlite3
 from sqlite3 import Error
 from dotenv import load_dotenv, dotenv_values
 # Platform Imports
-from connectors.postgresql import create_connection as postgresql_connector
-from connectors.sqlserver import create_connection as sqlserver_connector
+from connectors.rdbms_postgresql import create_connection as postgresql_connector
+from connectors.rdbms_sqlserver import create_connection as sqlserver_connector
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 from common.auditerror_mgmt import process_auditerror_details

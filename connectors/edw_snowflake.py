@@ -1,5 +1,5 @@
 # https://pypi.org/project/snowflake/
-import snowflake.connector
+import edw_snowflake.connector
 from datetime import time, datetime
 
 # Main Program
