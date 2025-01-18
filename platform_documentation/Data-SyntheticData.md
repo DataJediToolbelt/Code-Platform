@@ -36,9 +36,8 @@ In addition to this there are numerous offerings available, from libraries to te
 
 # Key Content
 
-| Area                                                                                        | 
-|---------------------------------------------------------------------------------------------|
-| <a href="./SDP-Subsystems.md" target="_blank">The Synthetic Data Platform: Subsystems</a>   |
-| <a href="./SDP-HowItWorks.md" target="_blank">The Synthetic Data Platform: How It Works</a> |
-
+| Area                                                                                         | 
+|----------------------------------------------------------------------------------------------|
+| <a href="./SDP-HowItWorks.md" target="_blank">The Synthetic Data Platform: How It Works</a>  |
+| <a href="./SDP-HowToUseIt.md" target="_blank">The Synthetic Data Platform: How To Use It</a> |
 
