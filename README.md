@@ -36,10 +36,11 @@ or simply installed Anacoda. Here is the [Platform future overview](Platform-Pyt
 # Platform
 This initial section covers basic areas of the system.
 
-| Area                        | Link                                      |
-|-----------------------------|-------------------------------------------|
-| General Basics Details of Platform | [Platform Basics](platform_documentation/Platform-Usage-Basics.md) |  
-| Web Tier Platform Usage     | [Web Tier](platform_documentation/Platform-Usage-WebTier.md)     |
+| Area                               | Link                                                                 |
+|------------------------------------|----------------------------------------------------------------------|
+| Platform Core                      | [Platform Background](platform_documentation/Platform-Subsystems.md) |  
+| General Basics Details of Platform | [Platform Basics](platform_documentation/Platform-Usage-Basics.md)   |  
+| Web Tier Platform Usage            | [Web Tier](platform_documentation/Platform-Usage-WebTier.md)         |
 
 ## Platform Modules
 In order to best explain how the Platform works we have created content that explains it. 

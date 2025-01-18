@@ -1,4 +1,4 @@
-<a href="https://github.com/DataJediToolbelt/Code-DataJediToolbelt/blob/main/profile/README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # Setting up The Platform for Usage
 As with any technology the setup and configuration is critical with how it functions and performs.
