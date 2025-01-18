@@ -49,16 +49,6 @@ def query_datamodeldata_general_activerecords(platform_vars, platform_settings, 
         return data_dtls
 
 
-def insert_datatier()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-def insert_datatier_datastructure()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-def insert_datatier_datastructure_dtl()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-
 
 if __name__ == "__main__":
     start_datetime = datetime.now()
