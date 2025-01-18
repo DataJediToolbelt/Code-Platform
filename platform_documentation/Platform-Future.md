@@ -1,5 +1,4 @@
-<a href="https://github.com/DataJediToolbelt/Code-DataJediToolbelt/blob/main/profile/README.md" target="_blank">Main Page</a>
-
+<a href="../README.md" target="_blank">Main Page</a>
 
 <b>We have experienced issues with several libraries on 3.13 still being an issue as of November 20, 2024.</b>
 

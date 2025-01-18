@@ -1,4 +1,4 @@
-<a href="./README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # SDP: Synthetic Data Platform
 Synthetic data is defined as: "any production data applicable to a given situation that is not obtained by direct

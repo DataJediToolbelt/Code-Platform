@@ -1,4 +1,4 @@
-<a href="./README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # Background
 De-identification and anonymization are becoming more and more critical for organizations. Data is what powers organizations and 

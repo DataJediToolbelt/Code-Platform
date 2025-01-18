@@ -1,5 +1,5 @@
 <a href="./Data-SyntheticData.md" target="_blank">Synthetic Data Main Page</a></br>
-<a href="./README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # Pre-Requisites
 To leverage the platform, you must first setup the [platform](Platform-Prerequisites.md).

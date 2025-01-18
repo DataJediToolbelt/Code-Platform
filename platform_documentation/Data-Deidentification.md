@@ -1,4 +1,4 @@
-<a href="./README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # Deidentifying Data
 Deidentifying data, sometimes called masking,  is defined by Immuta as: "Data de-identification is a 

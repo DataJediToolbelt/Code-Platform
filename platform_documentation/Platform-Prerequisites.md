@@ -1,4 +1,4 @@
-<a href="./README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # Pre-Requisites
 To leverage the platform, the following core steps should be completed:

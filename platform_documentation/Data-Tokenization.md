@@ -1,4 +1,4 @@
-<a href="./README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # Tokenizing Data 
 McKinsey defines tokenization as: "Tokenization is the process of creating a digital representation 

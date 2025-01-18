@@ -15,11 +15,10 @@ Start by going to the [code repository](https://github.com/DataJediToolbelt/Code
 3. Get a current release, currently they are just zips of the code and done monthly
 
 ### Data Model Deployment
-The platform currently supports Spark (Databricks), SnowFlake, SQL Server, Postgres and SQLite (is starting).
-Make sure you can connect to one of these RDBMS, or have access to resources that can setup the 
-data platform's DDLs for you. Go to the projects 
-[DDL repository](https://github.com/DataJediToolbelt/DataTier-DDLs) and 
-download the latest DDL that represents your data tier technology.
+The platform currently supports Spark (Databricks), SnowFlake, SQL Server, Postgres and 
+SQLite (is starting). Make sure you can connect to one of these RDBMS, or have access to 
+resources that can setup the data platform's DDLs for you. Go to the projects 
+[DDL repository](https://github.com/DataJediToolbelt/DataTier-DDLs) and download the latest DDL that represents your data tier technology.
 
 Load the DDL into the RDBMS using whatever tooling and capabilities you are comfortable with.
 
@@ -37,9 +36,9 @@ The following will install the base data needed for the platform.
 
 | File  Name                                                     | 
 |----------------------------------------------------------------|
-| ./InsertScripts-Base/1-ReferenceData.sql                       | 
-| ./InsertScripts-Base/2-DatamodelData.sql                       | 
-| ./InsertScripts-Base/3-PlatformData.sql                        |
+| ./InsertScripts-Base/1-ReferenceData.sql               | 
+| ./InsertScripts-Base/2-DatamodelData.sql              | 
+| ./InsertScripts-Base/3-PlatformData.sql                 |
 
 ##### Complete Data Loading
 The following will load everything initially into the platform. It will

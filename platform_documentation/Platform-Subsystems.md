@@ -1,5 +1,5 @@
 <a href="./Data-SyntheticData.md" target="_blank">Synthetic Data Main Page</a></br>
-<a href="./README.md" target="_blank">Main Page</a>
+<a href="../README.md" target="_blank">Main Page</a>
 
 # Subsystems
 Within the data tier there are several specific subsystems that we have logically separated by a naming convention of <tier>_<capability>
