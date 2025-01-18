@@ -1,6 +1,6 @@
 # Application and Web Tier Platform
-As we discussed on the main platform's repository README.md the main focus of our 
-efforts was on data and supporting it with an extensible data tier for a very long time. As 
+As we discussed on the [main platform's repository page](https://github.com/DataJediToolbelt) 
+the main focus of our efforts was on data and supporting it with an extensible data tier for a very long time. As 
 we built development assets to showcase the tremendous data model extensibilities and 
 capabilities we were always underwhelmed overall. In the end it seems to have a combination
 of lack of focus and potentially wrong technology for our overall vision. We are notI slighting 
@@ -25,13 +25,14 @@ extensible offering.
 
 ## Technology - Legacy
 As we mentioned above we talked about how we did nor really have a consistent approach 
-to technologies used that would help us better enable capabilities. Here is the [Legacy Code Details](platform_documentation/Platform-Legacy.md)
+to technologies used that would help us better enable capabilities. Here is the 
+[Legacy Code Details](platform_documentation/Platform-Legacy.md)
 
 ## Technology - Future (Python)
 We currently are working to implement all platform technology based capabilities with 
 Python. We have used Python v3.9 through various dot releases in 3.12 successfully on 
 multiple operating systems. To install Python we have only leveraged installers from python.org 
-or simply installed Anacoda. Here is the [Platform future overview](Platform-Python.md).
+or simply installed Anacoda. Here is the [Platform future overview](product_documentation/Platform-Future.md).
 
 # Platform
 This initial section covers basic areas of the system.

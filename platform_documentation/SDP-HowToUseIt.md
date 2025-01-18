@@ -7,7 +7,7 @@ To leverage the platform, you must first setup the [platform](Platform-Prerequis
 # Running the Platform
 In order to run the platform please follow these steps.
 
-1. In order to start the platform you must run main.py. In order to do run the program you can use an IDE
+1. In order to start the platform you must have the pre-requisites setup and resolved and then run main.py. In order to do run the program you can use an IDE
 or you can type:
 
 `
@@ -39,6 +39,28 @@ Postgresql="postgresql://<username>:<password>@<host>:<port>/<databasename>"
 Some known specific things to watch out for are passwords that start with the @ sign will cause
 the database connection to fail. 
 
-4. The platform will use the platform_operation attribute to load the appropriate configuration to run the
-platform operation. The default value is syntheticdata_generation. The platform maintains all the settings  
-for anything it can generate in the platform_datageneration_dataattributes table.
+
+### Synthetic Data Generation
+The platform will starts up in a consistent way. When the platform starts up and the platform uses the 
+platform_operation attribute to load the appropriate configuration and platform capability. The default value is 
+syntheticdata_generation. 
+
+The platform maintains all the settings and configuration for anything it can generate in the 
+platform_datageneration_dataattributes table. 
+
+| Data Attribute          | Purpose                                                                                   |
+|-------------------------|-------------------------------------------------------------------------------------------|
+| datagentype_id          | Unique GUID for any data generation action                                                |
+| datagentype_description | Description of the data generation id created                                             |
+| definition              |                                                                                           |
+| definition_metadata     |                                                                                           |
+| dataattribute_id        | The specific dataattribute being used. These attributes are in refdata_dataattributes     |
+| maintained_date         | The date it was created or modified                                                       |
+| expiration_date         | By default it is one year after any record creation or maintained                         |
+| status_id               | The status of the current record. The platform will only pull active records              |
+| maintained_user         | The default user is 'Platform' for records that were imported                             |
+| quantity                | The amount of records for the platform to synthetically generate                          |
+| maxrecords_in_source    | The record count that the platform uses to determine if any more data should be generated |
+| registeredapp_guid      | The value to use to associate a specific application to the record created                |
+| organization_guid       | The value to use to associate a specific organization to the record created               |
+

@@ -65,3 +65,4 @@ The following data structures are implemented with the core platform.
 Understanding or awareness of key aspects of the data model is critical as they lay the groundwork for how you would use the platform.
 
 
+
