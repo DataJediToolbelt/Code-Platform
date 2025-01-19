@@ -32,10 +32,7 @@ def main():
             list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
             platform_settings=platform_settings, sql_connection=rdbms_connection, table_name="platform_datageneration_dataattributes")
             #print(list_data_to_generate)
-            # list_data_to_generate = platform.query_platformdata_platformdatagenerationdataattributes_activerecords(platform_vars=platform_vars,
-            #                                                                           platform_settings=platform_settings,
-            #                                                                           sql_connection=rdbms_connection,
-            #                                                                           table_name="platform_datageneration_dataattributes")
+            # list_data_to_generate = platform.query_platformdata_platformdatagenerationdataattributes_activerecords(platform_vars=platform_vars,                                                                      table_name="platform_datageneration_dataattributes")
             pass
     # Postgres
     if (platform_settings.platform_operation_name == "syntheticdata_generation" and platform_settings.datatier_technologies == "postgresql"):
