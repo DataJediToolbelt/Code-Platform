@@ -10,6 +10,7 @@ import protocol_http as http_protocol_client
 import datatier_actions.platform_query as datatier_actions
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
+import common.formatters as formatters
 
 
 def localdb_connectivity(db_location :str)->sqlite3.Connection:
@@ -44,27 +45,30 @@ if __name__ == "__main__":
     platform_datasources = datatier_actions.query_platformdata_general_activerecords(platform_vars = platform_vars, platform_settings =
                                                               platform_settings, sql_connection = rdbms_connection,
                                                               table_name = 'platform_datasources')
-    # populate from database entry
-    print(f"")
-    load_dotenv()
-    # Change to be the value in the DATASOURCE_NAME to ensure there is a match
-    uid_pwd = os.getenv("SQL_Server")
-    connectors = ['postgresql']
-    for connector in connectors:
-        if (connector == 'postgresql'):
-            # Postgres Database Connection
-            rdbms_connection =  connect_postgresql.create_connection()
-            print(f"Connection to Postgres at {datetime.now()}")
-        if (connector == 'sqlserver'):
-            # SQL Server Database Connection
-            rdbms_connection = connect_sqlserver.create_connection()
-            print(f"Connection to SQL Server at {datetime.now()}")
-        if (connector == 'http'):
-            url =""
-            http_protocol_client.connect_to_endpoint(url_value=url)
-            print(f"Connection to DTTP site Protocol Client at {datetime.now()}")
-        if (connector == 'hl7'):
-            #HL7 Client
-            hl7_protocol_client.hl7_client()
-            print(f"Connection to HL7 Protocol Client at {datetime.now()}")
+    # loop through returned records and connect to them
+    for platform_datasource in platform_datasources:
+        print(f"Data source name {platform_datasource}")
+        load_dotenv()
+        # Change to be the value in the DATASOURCE_NAME to ensure there is a match
+        uid_pwd = os.getenv("SQL_Server")
+        # Build Connection String
+        connection_string = formatters.build_rdbms_connection_string()
+        connectors = ['postgresql']
+        for connector in connectors:
+            if (connector == 'postgresql'):
+                # Postgres Database Connection
+                rdbms_connection =  connect_postgresql.create_connection()
+                print(f"Connection to Postgres at {datetime.now()}")
+            if (connector == 'sqlserver'):
+                # SQL Server Database Connection
+                rdbms_connection = connect_sqlserver.create_connection()
+                print(f"Connection to SQL Server at {datetime.now()}")
+            if (connector == 'http'):
+                url =""
+                http_protocol_client.connect_to_endpoint(url_value=url)
+                print(f"Connection to DTTP site Protocol Client at {datetime.now()}")
+            if (connector == 'hl7'):
+                #HL7 Client
+                hl7_protocol_client.hl7_client()
+                print(f"Connection to HL7 Protocol Client at {datetime.now()}")
 

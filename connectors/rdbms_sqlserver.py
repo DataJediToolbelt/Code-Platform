@@ -7,15 +7,13 @@ def create_connection(connection_string):
     try:
         connString = connection_string.split(':')
         # Connect to a defined SQL Server database
-        #rdbms_connection = pymssql.connect({rdbms_host},{rdbms_uid},
-        #                                        {rdbms_pwd},{rdbms_database}, as_dict=True}
+        #rdbms_connection = pymssql.connect({rdbms_host},{rdbms_uid}, {rdbms_pwd},{rdbms_database}, as_dict=True}
         hostname = connString[2].split('@')[1]
         uid = connString[1].replace('/', '')
         pwd = connString[2].split('@')[0]
         dbname = connString[3].split('/')[1]
-
         rdbms_connection = pymssql.connect(server=hostname, user=uid, password=pwd, port=1433, database=dbname, as_dict=True)
-        print("You are connected to MS SQL Server ")
+        #print("You are connected to MS SQL Server ")
     except (Exception, Error) as error:
         print("Error while connecting to MS SQL Server", error)
     finally:

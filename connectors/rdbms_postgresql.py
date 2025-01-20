@@ -10,11 +10,8 @@ from common.platform_settings import build_platform_config
 
 def create_connection(connection_string):
     try:
-        # Use Configuration Settings from SQLite to drive this
-        # Conditional based on data being present in database
-
         # Connect to an existing database
-        #conStr = "postgres://postgres:@localhost:5432/datajeditoolbelt"
+        # Use env file that can also determine
         rdbms_connection = psycopg.connect(connection_string)
         # Create a cursor to perform database operations
         cursor = rdbms_connection.cursor()
