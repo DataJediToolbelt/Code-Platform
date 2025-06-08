@@ -6,9 +6,14 @@ from datetime import datetime
 # Platform Imports
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
-
+from common.auditerror_mgmt import process_auditerror_details
 
 def create_connection(connection_string):
+    platform_vars = build_platform_variables();
+    local_database_path = os.path.dirname(os.getcwd()) + os.sep + "datatier_local" + os.sep
+    platform_vars.local_database_path = local_database_path
+    # Pull in platform configuration settings from configuration database
+    platform_settings = build_platform_config(platform_vars);
     try:
         # Connect to an existing database
         # Use env file that can also determine
@@ -25,8 +30,12 @@ def create_connection(connection_string):
         print("You are connected to - ", record, "\n")
     except (Exception, Error) as error:
         print("Error while connecting to PostgreSQL", error)
+        rdbms_connection = None
+        process_auditerror_details(platform_vars, platform_settings, auditerror_type="audit", component_name="db_connect", operation_name="connect_postgresql",
+        start_datetime=datetime.now(), end_datetime=datetime.now(), transaction_count=0, error_id="", error_desc="Error Connecting", processed_objectname="NA",
+        audit_details="Connecting to PostgreSQL")
     finally:
-        if (rdbms_connection):
+        if (rdbms_connection != None):
             cursor.close()
     return rdbms_connection
 
