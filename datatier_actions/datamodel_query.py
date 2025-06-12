@@ -1,7 +1,7 @@
 from datetime import datetime
 import os
 # Platform Imports
-from connectors.postgresql import create_connection
+from connectors.rdbms_postgresql import create_connection
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 from common.auditerror_mgmt import process_auditerror_details
@@ -47,16 +47,6 @@ def query_datamodeldata_general_activerecords(platform_vars, platform_settings, 
     finally:
         sql_cursor.close()
         return data_dtls
-
-
-def insert_datatier()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-def insert_datatier_datastructure()->None:
-    print(f"Starting Insert/Upsert Operation")
-
-def insert_datatier_datastructure_dtl()->None:
-    print(f"Starting Insert/Upsert Operation")
 
 
 

@@ -3,8 +3,8 @@ import os
 import sqlite3
 from dotenv import load_dotenv, dotenv_values
 # Platform Imports
-import connectors.postgresql
-import connectors.sqlserver
+import connectors.rdbms_postgresql
+import connectors.rdbms_sqlserver
 from common.platform_settings import build_platform_variables
 from common.platform_settings import build_platform_config
 from common.auditerror_mgmt import process_auditerror_details

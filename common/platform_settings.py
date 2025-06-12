@@ -21,7 +21,7 @@ def build_platform_variables() -> platform_variables:
 
 def build_platform_config(platform_vars)->platform_settings:
     start_datetime = datetime.now()
-    processed_objectname = "insert_datatier_sdp_dataattributes"
+    processed_objectname = ""
     table_name = "configuration_details"
     #Variables
     output_settings = None

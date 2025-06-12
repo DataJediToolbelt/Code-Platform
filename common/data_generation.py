@@ -1,7 +1,6 @@
 import random
 from datetime import datetime
 from sys import exception
-
 import rstr
 from RegexGenerator import RegexGenerator
 import exrex

@@ -27,36 +27,32 @@ def main():
     # Synthetic Data Generation By RDBMS
     rdbms_connection = None
     list_data_to_generate = []
-    # SQLite
-    if (platform_settings.platform_operation_name == "syntheticdata_generation" and platform_settings.datatier_technologies == "sqlite"):
-            list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
-            platform_settings=platform_settings, sql_connection=rdbms_connection, table_name="platform_datageneration_dataattributes")
-            #print(list_data_to_generate)
-            # list_data_to_generate = platform.query_platformdata_platformdatagenerationdataattributes_activerecords(platform_vars=platform_vars,
-            #                                                                           platform_settings=platform_settings,
-            #                                                                           sql_connection=rdbms_connection,
-            #                                                                           table_name="platform_datageneration_dataattributes")
-            pass
-    # Postgres
-    if (platform_settings.platform_operation_name == "syntheticdata_generation" and platform_settings.datatier_technologies == "postgresql"):
-            list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
-                                                                                      platform_settings=platform_settings,
-                                                                                      sql_connection=rdbms_connection,
-                                                                                      table_name="platform_datageneration_dataattributes")
-            pass
-    # SQL Server
-    if (platform_settings.platform_operation_name == "syntheticdata_generation" and platform_settings.datatier_technologies == "sqlserver"):
-            list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
-                                                                                      platform_settings=platform_settings,
-                                                                                      sql_connection=rdbms_connection,
-                                                                                      table_name="platform_datageneration_dataattributes")
-            pass
+    if (platform_settings.platform_operation_name == "syntheticdata_generation"):
+            # SQLite
+            if (platform_settings.datatier_technologies == "sqlite"):
+                list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
+                platform_settings=platform_settings, sql_connection=rdbms_connection, table_name="platform_datageneration_dataattributes")
+                #print(list_data_to_generate)
+                # list_data_to_generate = platform.query_platformdata_platformdatagenerationdataattributes_activerecords(platform_vars=platform_vars,                                                                      table_name="platform_datageneration_dataattributes")
+                pass
+            # Postgres
+            if (platform_settings.datatier_technologies == "postgresql"):
+                list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
+                platform_settings=platform_settings, sql_connection=rdbms_connection, table_name="platform_datageneration_dataattributes")
+                pass
+            # SQL Server
+            if (platform_settings.platform_operation_name == "syntheticdata_generation" and platform_settings.datatier_technologies == "sqlserver"):
+                list_data_to_generate = platform.query_platformdata_general_activerecords(platform_vars=platform_vars,
+                platform_settings=platform_settings, sql_connection=rdbms_connection, table_name="platform_datageneration_dataattributes")
+                pass
+            # Process with the Data Provided
+            generate_data(platform_datageneration_dataattributes=list_data_to_generate, platform_vars=platform_vars,
+                          platform_settings=platform_settings, rdbms_connection=rdbms_connection)
+
     elif (platform_settings.platform_operation_name == ""):
         print("No Operation Defined")
 
-    #Process with the Data Provided
-    generate_data(platform_datageneration_dataattributes=list_data_to_generate, platform_vars=platform_vars,
-                  platform_settings=platform_settings, rdbms_connection=rdbms_connection)
+
 
     print("Program Ended")
 
